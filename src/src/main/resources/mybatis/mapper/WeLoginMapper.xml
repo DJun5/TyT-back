@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.smarket.demo.mapper.WeLoginMapper">
+
+
+    <select id="queryAll" resultType="com.smarket.demo.model.Wlogin">
+        SELECT
+         w.id, w.img, w.name, w.account,
+         u.id as userId
+        FROM wlogin w
+        left join `user` u on u.wloginid = w.id
+    </select>
+
+    <insert id="addSubmit">
+        insert into wlogin(img, name, account)
+        values (#{img},#{name},#{account})
+    </insert>
+
+    <update id="addSubmit2">
+        update `user` set wloginid = #{id} where id = #{userId}
+    </update>
+
+</mapper>
