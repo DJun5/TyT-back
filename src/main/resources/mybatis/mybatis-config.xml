@@ -5,6 +5,7 @@
 <configuration>
 
     <settings>
+        <!-- 将如tyt_admin转成驼峰命名TytAdmin -->
         <setting name="mapUnderscoreToCamelCase" value="true"/>
     </settings>
 </configuration>

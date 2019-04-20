@@ -19,7 +19,7 @@ public class FuncUtils {
     public static UploadVo upload(MultipartFile file,UploadService uploadService){
         UploadVo uploadVo = new UploadVo();
         try {
-            uploadVo = uploadService.upload(file, Constant.imgUploadPath);
+            uploadVo = uploadService.upload(file, Constant.UPLOAD_PATH);
             if(StringUtils.isEmpty(uploadVo.getUploadUrl())){
                 JSONResult.ok("上传失败");
             }else
