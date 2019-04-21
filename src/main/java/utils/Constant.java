@@ -9,4 +9,8 @@ public class Constant {
      */
     public static final String UPLOAD_PATH = "C:/img";
 
+    /**
+     * 解密秘钥
+     */
+    public static final String PWD_KEY = "tyt";
 }

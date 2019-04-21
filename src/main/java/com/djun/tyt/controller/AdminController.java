@@ -7,11 +7,13 @@ import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+import utils.EncryptUtil;
 import utils.JSONResult;
 
 import javax.annotation.Resource;
 
 import static org.springframework.util.ObjectUtils.isEmpty;
+import static utils.Constant.PWD_KEY;
 
 @Api("管理员")
 @RestController
@@ -19,7 +21,8 @@ import static org.springframework.util.ObjectUtils.isEmpty;
 public class AdminController {
     @Resource
     private AdminService service;
-
+    private EncryptUtil encrypt = new EncryptUtil();
+    private Admin adminModel = new Admin();
     /**
      * 新增管理员数据
      * @param model 管理员数据
@@ -31,6 +34,11 @@ public class AdminController {
     @ApiOperation(value = "新增管理员数据" ,  notes="POST传参：name pwd roleId")
     @RequestMapping(value = {"/addSubmit"},method = RequestMethod.POST)
     public JSONResult addSubmit(Admin model){
+        // 加密管理员密码存库
+        if (!isEmpty(model.getPwd()))
+            model.setPwd(encrypt.DESencode(model.getPwd(),PWD_KEY));
+        else
+            return JSONResult.errorMsg("检查pwd参数");
         service.addSubmit(model);
         return JSONResult.ok("插入成功");
     }
@@ -41,11 +49,13 @@ public class AdminController {
      * @param newPwd 新密码
      * @return ok
      */
-    @ApiOperation(value = "修改管理员数据" ,  notes="POST传参：pwd")
+    @ApiOperation(value = "修改密码" ,  notes="POST传参：pwd")
     @RequestMapping(value = {"/update"},method = RequestMethod.POST)
     public JSONResult update(int id,String newPwd){
-        if (!isEmpty(id) && !isEmpty(newPwd))
+        if (!isEmpty(id) && !isEmpty(newPwd)){
+            adminModel.setPwd(encrypt.DESencode(adminModel.getPwd(),PWD_KEY));
             service.update(id,newPwd);
+        }
         else
             return JSONResult.errorMsg("请检查参数id和newPwd");
         return JSONResult.ok("插入成功");
