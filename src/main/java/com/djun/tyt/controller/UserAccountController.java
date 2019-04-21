@@ -7,9 +7,12 @@ import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+import utils.EncryptUtil;
 import utils.JSONResult;
 
 import javax.annotation.Resource;
+import java.util.Date;
+
 
 @Api(description = "用户信息")
 @RestController
@@ -17,24 +20,41 @@ import javax.annotation.Resource;
 public class UserAccountController {
     @Resource
     private UserAccountService service;
+    private EncryptUtil encrypt = new EncryptUtil();
 
-    @ApiOperation(value = "新增用户数据" ,  notes="POST方法传入非必选参数参数：uname\nupassword\nphone\nemail\nuimg")
-    @RequestMapping(value = {"/addSubmit"},method = RequestMethod.POST)
-    public JSONResult addSubmit(TUser model){
-        service.addSubmit(model);
-        return JSONResult.ok("添加成功");
-    }
-
-    @ApiOperation(value = "查询用户数据" ,  notes="GET方法")
+    @ApiOperation(value = "查询用户数据" ,  notes="GET")
     @RequestMapping(value = {"/queryAll"},method = RequestMethod.GET)
     public JSONResult queryAll(){
         return JSONResult.ok(service.queryAll());
     }
 
-    @ApiOperation(value = "查询用户数据" ,  notes="POST方法")
-    @RequestMapping(value = {"/queryAll"},method = RequestMethod.POST)
+    /**
+     * 增加账户
+     * @param model 用户基本信息
+     *                  uname
+     *                  upassword
+     *                  phone
+     *                  email
+     *                  uimg
+     */
+    @ApiOperation(value = "新增用户数据" ,  notes="POST传入非必选参数参数：uname\tupassword\tphone\temail\tuimg")
+    @RequestMapping(value = {"/addSubmit"},method = RequestMethod.POST)
+    public JSONResult addSubmit(TUser model){
+
+        return JSONResult.ok("添加成功");
+    }
+
+    /**
+     * 修改账户数据
+     * @param model upassword
+     *                  phone
+     *                  email
+     *                  uimg
+     */
+    @ApiOperation(value = "修改用户数据" ,  notes="POST")
+    @RequestMapping(value = {"/update"},method = RequestMethod.POST)
     public JSONResult update(TUser model){
-        service.update(model);
+
         return JSONResult.ok("修改成功");
     }
 

@@ -1,7 +1,6 @@
 package com.djun.tyt.serviceImpl;
 
 import com.djun.tyt.mapper.UserAccountMapper;
-import com.djun.tyt.model.TUser;
 import com.djun.tyt.service.UserAccountService;
 import org.springframework.stereotype.Service;
 

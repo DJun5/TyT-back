@@ -1,40 +1,25 @@
 package com.djun.tyt.model;
 
-import java.util.Date;
-
 /**
- * 用户信息表
+ * 用户数据表
  */
 public class TUser {
 
   private long id;
-  // 唯一用户名，不可修改如微信号
-  private String uname;
-  // 登录密码
-  private String upassword;
-  // 用户类型
-  private long typeid;
+  private String uName;
+  private String password;
+  private long typeId;
   private String phone;
   private String email;
-  // 头像
-  private String uimg;
-  // 用户等级，默认等级为1
-  private long ulevel;
-  // 升级所需经验值，默认为50
+  private String headImg;
+  private long uLevel;
+  private String faceImg;
   private long experience;
-  // 健康度，默认60，最高100
   private long healthDegree;
-  // 诚信度，默认60，最高1000
   private long honorDegree;
-  private Date createTime;
+  private java.sql.Timestamp createTime;
+  private java.sql.Timestamp updateTime;
 
-  public Date getCreateTime() {
-    return createTime;
-  }
-
-  public void setCreateTime(Date createTime) {
-    this.createTime = createTime;
-  }
 
   public long getId() {
     return id;
@@ -45,30 +30,30 @@ public class TUser {
   }
 
 
-  public String getUname() {
-    return uname;
+  public String getUName() {
+    return uName;
   }
 
-  public void setUname(String uname) {
-    this.uname = uname;
-  }
-
-
-  public String getUpassword() {
-    return upassword;
-  }
-
-  public void setUpassword(String upassword) {
-    this.upassword = upassword;
+  public void setUName(String uName) {
+    this.uName = uName;
   }
 
 
-  public long getTypeid() {
-    return typeid;
+  public String getPassword() {
+    return password;
   }
 
-  public void setTypeid(long typeid) {
-    this.typeid = typeid;
+  public void setPassword(String password) {
+    this.password = password;
+  }
+
+
+  public long getTypeId() {
+    return typeId;
+  }
+
+  public void setTypeId(long typeId) {
+    this.typeId = typeId;
   }
 
 
@@ -90,21 +75,30 @@ public class TUser {
   }
 
 
-  public String getUimg() {
-    return uimg;
+  public String getHeadImg() {
+    return headImg;
   }
 
-  public void setUimg(String uimg) {
-    this.uimg = uimg;
+  public void setHeadImg(String headImg) {
+    this.headImg = headImg;
   }
 
 
-  public long getUlevel() {
-    return ulevel;
+  public long getULevel() {
+    return uLevel;
   }
 
-  public void setUlevel(long ulevel) {
-    this.ulevel = ulevel;
+  public void setULevel(long uLevel) {
+    this.uLevel = uLevel;
+  }
+
+
+  public String getFaceImg() {
+    return faceImg;
+  }
+
+  public void setFaceImg(String faceImg) {
+    this.faceImg = faceImg;
   }
 
 
@@ -132,6 +126,24 @@ public class TUser {
 
   public void setHonorDegree(long honorDegree) {
     this.honorDegree = honorDegree;
+  }
+
+
+  public java.sql.Timestamp getCreateTime() {
+    return createTime;
+  }
+
+  public void setCreateTime(java.sql.Timestamp createTime) {
+    this.createTime = createTime;
+  }
+
+
+  public java.sql.Timestamp getUpdateTime() {
+    return updateTime;
+  }
+
+  public void setUpdateTime(java.sql.Timestamp updateTime) {
+    this.updateTime = updateTime;
   }
 
 }

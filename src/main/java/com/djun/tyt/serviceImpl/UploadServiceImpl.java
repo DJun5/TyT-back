@@ -43,7 +43,6 @@ public class UploadServiceImpl implements UploadService {
             uploadVo.setBeginFileName(originalFilename);
             uploadVo.setLastFileName(fileName);
             uploadVo.setFileType(fileType);
-
             uploadVo.setFileSize(Long.toString(fileSize));
             uploadVo.setUploadUrl(targetFile.toString());
             uploadVo.setResult("上传成功");
