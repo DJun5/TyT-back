@@ -9,17 +9,15 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import utils.EncryptUtil;
 import utils.JSONResult;
-
 import javax.annotation.Resource;
-import java.util.Date;
 
-
-@Api(description = "用户信息")
+@Api("用户数据")
 @RestController
 @RequestMapping("/UserAccount")
 public class UserAccountController {
     @Resource
     private UserAccountService service;
+
     private EncryptUtil encrypt = new EncryptUtil();
 
     @ApiOperation(value = "查询用户数据" ,  notes="GET")
@@ -32,15 +30,15 @@ public class UserAccountController {
      * 增加账户
      * @param model 用户基本信息
      *                  uname
-     *                  upassword
+     *                  password
      *                  phone
      *                  email
      *                  uimg
      */
-    @ApiOperation(value = "新增用户数据" ,  notes="POST传入非必选参数参数：uname\tupassword\tphone\temail\tuimg")
+    @ApiOperation(value = "新增用户数据" ,  notes="POST传入非必选参数参数：uname\tpassword\tphone\temail\tuimg")
     @RequestMapping(value = {"/addSubmit"},method = RequestMethod.POST)
     public JSONResult addSubmit(TUser model){
-
+        service.addSubmit(model);
         return JSONResult.ok("添加成功");
     }
 

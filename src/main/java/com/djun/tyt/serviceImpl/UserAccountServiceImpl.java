@@ -1,6 +1,7 @@
 package com.djun.tyt.serviceImpl;
 
 import com.djun.tyt.mapper.UserAccountMapper;
+import com.djun.tyt.model.TUser;
 import com.djun.tyt.service.UserAccountService;
 import org.springframework.stereotype.Service;
 
@@ -26,4 +27,5 @@ public class UserAccountServiceImpl implements UserAccountService {
     public List<TUser> queryAll() {
       return  mapper.queryAll();
     }
+
 }

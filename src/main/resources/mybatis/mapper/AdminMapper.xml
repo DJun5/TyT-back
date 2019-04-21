@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.djun.tyt.mapper.AdminMapper">
+
+    <select id="queryAll" resultType="com.djun.tyt.model.Vo.AdminVo">
+        select
+         `name`,pwd,role_id,role_name
+         from admin a
+        left join a_role r on a.role_id = r.id
+    </select>
+
+    <insert id="addSubmit">
+        insert into Admin(`name`,pwd,role_id) values (#{name},#{pwd},#{roleId})
+    </insert>
+
+    <update id="update">
+        update Admin SET pwd=#{pwd} where id =#{id}
+    </update>
+
+    <delete id="delete">
+        delete from admin where id = #{id}
+    </delete>
+</mapper>

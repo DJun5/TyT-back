@@ -5,15 +5,7 @@
 <mapper namespace="com.djun.tyt.mapper.UserAccountMapper">
 
     <select id="queryAll" resultType="com.djun.tyt.model.TUser">
-
+        select * from t_user
     </select>
-
-    <insert id="addSubmit">
-
-    </insert>
-
-    <update id="update">
-
-    </update>
 
 </mapper>
