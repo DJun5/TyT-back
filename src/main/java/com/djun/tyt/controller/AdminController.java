@@ -14,8 +14,14 @@ import javax.annotation.Resource;
 
 import static org.springframework.util.ObjectUtils.isEmpty;
 import static utils.Constant.PWD_KEY;
-
-@Api("管理员")
+/*
+ @RequestMapping(value = "/getIp", method = RequestMethod.POST)
+ @ResponseBody
+ public String getIp(HttpServletRequest request) {
+ return IpUtil.getIpAddr(request);
+ }
+ */
+@Api(description = "管理员")
 @RestController
 @RequestMapping("/Admin")
 public class AdminController {
@@ -32,6 +38,7 @@ public class AdminController {
      * @return ok
      */
     @ApiOperation(value = "新增管理员数据" ,  notes="POST传参：name pwd roleId")
+
     @RequestMapping(value = {"/addSubmit"},method = RequestMethod.POST)
     public JSONResult addSubmit(Admin model){
         // 加密管理员密码存库

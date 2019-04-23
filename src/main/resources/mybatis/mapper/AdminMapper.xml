@@ -9,6 +9,7 @@
          `name`,pwd,role_id,role_name
          from admin a
         left join a_role r on a.role_id = r.id
+        join a_login al ON al.id = a.login_id
     </select>
 
     <insert id="addSubmit">

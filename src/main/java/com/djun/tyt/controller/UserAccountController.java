@@ -7,17 +7,17 @@ import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+import utils.Constant;
 import utils.EncryptUtil;
 import utils.JSONResult;
 import javax.annotation.Resource;
 
-@Api("用户数据")
+@Api(description = "后台操作用户数据")
 @RestController
 @RequestMapping("/UserAccount")
 public class UserAccountController {
     @Resource
     private UserAccountService service;
-
     private EncryptUtil encrypt = new EncryptUtil();
 
     @ApiOperation(value = "查询用户数据" ,  notes="GET")
@@ -38,6 +38,7 @@ public class UserAccountController {
     @ApiOperation(value = "新增用户数据" ,  notes="POST传入非必选参数参数：uname\tpassword\tphone\temail\tuimg")
     @RequestMapping(value = {"/addSubmit"},method = RequestMethod.POST)
     public JSONResult addSubmit(TUser model){
+        model.setPassword(encrypt.DESencode(model.getPassword(), Constant.PWD_KEY));
         service.addSubmit(model);
         return JSONResult.ok("添加成功");
     }
@@ -52,7 +53,8 @@ public class UserAccountController {
     @ApiOperation(value = "修改用户数据" ,  notes="POST")
     @RequestMapping(value = {"/update"},method = RequestMethod.POST)
     public JSONResult update(TUser model){
-
+        model.setPassword(encrypt.DESencode(model.getPassword(), Constant.PWD_KEY));
+        service.update(model);
         return JSONResult.ok("修改成功");
     }
 
