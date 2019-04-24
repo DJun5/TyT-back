@@ -21,13 +21,12 @@ import static org.springframework.util.ObjectUtils.isEmpty;
 public class UserLoginController {
     @Resource
     private UserLoginService service;
-//    private EncryptUtil encrypt = new EncryptUtil();
 
     /**
-     * 用户登录
+     * 用户的三种登录方式
      * @param uName 账号（电话号码、学号、AI账号）
      * @param password 密码，前端上传密文
-     * @return data
+     * @return User Data
      */
     @ApiOperation(value = "账号密码登录" ,  notes="uName password")
     @RequestMapping(value = "/Login",method = RequestMethod.POST)
@@ -39,9 +38,10 @@ public class UserLoginController {
         }else {
             if (!ValidatorUtil.isMobile(uName)){
                 return JSONResult.ok(service.login(uName, password));
-            }else {
-//                password = encrypt.DESencode(password, Constant.PWD_KEY);
+            }else if (ValidatorUtil.isMobile(uName)){
                 return JSONResult.ok(service.login2(uName, password));
+            }else{
+                return JSONResult.ok(service.login3(uName, password));
             }
         }
     }

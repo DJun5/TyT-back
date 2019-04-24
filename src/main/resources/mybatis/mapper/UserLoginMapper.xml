@@ -15,5 +15,11 @@
        WHERE u.phone = #{mobile} and l.`password`=#{password}
     </select>
 
+    <select id="login3" resultType="com.djun.tyt.model.TUser">
+       SELECT * FROM u_login l
+       JOIN t_user u on u.id = l.uid
+       JOIN u_type ut on ut.id = u.type_id
+       WHERE ut.account = #{account} and l.`password`=#{password}
+    </select>
 
 </mapper>
