@@ -15,4 +15,9 @@ public class UserLoginServiceImpl implements UserLoginService {
     public List<TUser> login(String uName, String password) {
         return mapper.login(uName,password);
     }
+    @Override
+    public List<TUser> login2(String mobile, String password) {
+        return mapper.login2(mobile,password);
+    }
+
 }

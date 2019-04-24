@@ -1,19 +1,18 @@
 package com.djun.tyt.model;
 
-/**
- * 用户数据表
- */
 public class TUser {
 
   private long id;
   private String uName;
-  private String password;
   private long typeId;
   private String phone;
   private String email;
   private String headImg;
   private long uLevel;
   private String faceImg;
+  private long fansNum;
+  private long fansUid;
+  private long blacklistUid;
   private long experience;
   private long healthDegree;
   private long honorDegree;
@@ -36,15 +35,6 @@ public class TUser {
 
   public void setUName(String uName) {
     this.uName = uName;
-  }
-
-
-  public String getPassword() {
-    return password;
-  }
-
-  public void setPassword(String password) {
-    this.password = password;
   }
 
 
@@ -99,6 +89,33 @@ public class TUser {
 
   public void setFaceImg(String faceImg) {
     this.faceImg = faceImg;
+  }
+
+
+  public long getFansNum() {
+    return fansNum;
+  }
+
+  public void setFansNum(long fansNum) {
+    this.fansNum = fansNum;
+  }
+
+
+  public long getFansUid() {
+    return fansUid;
+  }
+
+  public void setFansUid(long fansUid) {
+    this.fansUid = fansUid;
+  }
+
+
+  public long getBlacklistUid() {
+    return blacklistUid;
+  }
+
+  public void setBlacklistUid(long blacklistUid) {
+    this.blacklistUid = blacklistUid;
   }
 
 

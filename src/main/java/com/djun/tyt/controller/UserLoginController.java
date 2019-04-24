@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 import utils.Constant;
 import utils.EncryptUtil;
 import utils.JSONResult;
+import utils.ValidatorUtil;
 
 import javax.annotation.Resource;
 
@@ -20,14 +21,29 @@ import static org.springframework.util.ObjectUtils.isEmpty;
 public class UserLoginController {
     @Resource
     private UserLoginService service;
-    private EncryptUtil encrypt = new EncryptUtil();
+//    private EncryptUtil encrypt = new EncryptUtil();
+
+    /**
+     * 用户登录
+     * @param uName 账号（电话号码、学号、AI账号）
+     * @param password 密码，前端上传密文
+     * @return data
+     */
     @ApiOperation(value = "账号密码登录" ,  notes="uName password")
     @RequestMapping(value = "/Login",method = RequestMethod.POST)
     public JSONResult login(String uName, String password){
-        if (!isEmpty(password))
-            password = encrypt.DESencode(password, Constant.PWD_KEY);
-
-        return JSONResult.ok(service.login(uName,password));
+        if (isEmpty(password)){
+            return JSONResult.errorMsg("password参数为空");
+        }else if(isEmpty(uName)){
+            return JSONResult.errorMsg("uName参数为空");
+        }else {
+            if (!ValidatorUtil.isMobile(uName)){
+                return JSONResult.ok(service.login(uName, password));
+            }else {
+//                password = encrypt.DESencode(password, Constant.PWD_KEY);
+                return JSONResult.ok(service.login2(uName, password));
+            }
+        }
     }
 
 }
