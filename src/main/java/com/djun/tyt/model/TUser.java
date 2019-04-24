@@ -7,17 +7,21 @@ public class TUser {
   private long typeId;
   private String phone;
   private String email;
+  private String nickname;
+  private String signature;
   private String headImg;
   private long uLevel;
+  private long openDegree;
   private String faceImg;
   private long fansNum;
-  private long fansUid;
+  private long fansId;
   private long blacklistUid;
   private long experience;
   private long healthDegree;
   private long honorDegree;
   private java.sql.Timestamp createTime;
   private java.sql.Timestamp updateTime;
+  private long status;
 
 
   public long getId() {
@@ -65,6 +69,24 @@ public class TUser {
   }
 
 
+  public String getNickname() {
+    return nickname;
+  }
+
+  public void setNickname(String nickname) {
+    this.nickname = nickname;
+  }
+
+
+  public String getSignature() {
+    return signature;
+  }
+
+  public void setSignature(String signature) {
+    this.signature = signature;
+  }
+
+
   public String getHeadImg() {
     return headImg;
   }
@@ -80,6 +102,15 @@ public class TUser {
 
   public void setULevel(long uLevel) {
     this.uLevel = uLevel;
+  }
+
+
+  public long getOpenDegree() {
+    return openDegree;
+  }
+
+  public void setOpenDegree(long openDegree) {
+    this.openDegree = openDegree;
   }
 
 
@@ -101,12 +132,12 @@ public class TUser {
   }
 
 
-  public long getFansUid() {
-    return fansUid;
+  public long getFansId() {
+    return fansId;
   }
 
-  public void setFansUid(long fansUid) {
-    this.fansUid = fansUid;
+  public void setFansId(long fansId) {
+    this.fansId = fansId;
   }
 
 
@@ -161,6 +192,15 @@ public class TUser {
 
   public void setUpdateTime(java.sql.Timestamp updateTime) {
     this.updateTime = updateTime;
+  }
+
+
+  public long getStatus() {
+    return status;
+  }
+
+  public void setStatus(long status) {
+    this.status = status;
   }
 
 }
