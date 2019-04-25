@@ -23,7 +23,7 @@
         JOIN u_open_degree d on i.oid = d.id
       where u.id =#{userId}
     </select>
-  <select id="selectedByInfoId" resultType="com.djun.tyt.model.UInfo">
+  <select id="selectedByInfoId" resultType="com.djun.tyt.model.Vo.DynamicInfoVo">
       SELECT
         u.id as userId, u.u_name, u.type_id, u.phone, u.email, u.nickname, u.signature, u.head_img,
         u.u_level, u.open_degree, u.face_img, u.fans_num,u.honor_degree,u.status,
