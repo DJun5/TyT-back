@@ -18,7 +18,7 @@ public class RecommendUserController {
     private RecommendUserService service;
 
     @ApiOperation(value = "查询被推荐用户的信息",notes = "该接口仅能获取推荐用户的某些信息")
-    @RequestMapping(value = "/Recommend",method = RequestMethod.GET)
+    @RequestMapping(value = "/recommend",method = RequestMethod.GET)
     public JSONResult recommendFollow(){
         return JSONResult.ok(service.recommendFollow());
     }

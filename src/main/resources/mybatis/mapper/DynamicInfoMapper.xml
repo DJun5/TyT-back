@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.djun.tyt.mapper.DynamicInfoMapper">
+    <select id="queryAll" resultType="com.djun.tyt.model.Vo.DynamicInfoVo">
+      SELECT
+      i.id as infoId, i.uid as userId, i.title, i.img, i.content, i.praise, i.forward, i.status,
+      i.browse_volume,i.create_time, i.update_time,d.t_name as openDegree
+      from u_info i
+        JOIN u_open_degree d on i.oid = d.id
+        JOIN t_user u on i.uid = u.id
+      order by (i.praise) DESC
+    </select>
+    <select id="selectedByUserId" resultType="com.djun.tyt.model.Vo.DynamicInfoVo">
+      SELECT
+        u.id as userId, u.u_name, u.type_id, u.phone, u.email, u.nickname, u.signature, u.head_img,
+        u.u_level, u.open_degree, u.face_img, u.fans_num,u.honor_degree, u.status,
+        i.id as infoId, title, img, content, praise, forward, i.status, browse_volume, i.create_time, i.update_time,
+        d.t_name as openDegree
+      FROM t_user u
+        JOIN u_info i on u.id = i.uid
+        JOIN u_open_degree d on i.oid = d.id
+      where u.id =#{userId}
+    </select>
+  <select id="selectedByInfoId" resultType="com.djun.tyt.model.UInfo">
+      SELECT
+        u.id as userId, u.u_name, u.type_id, u.phone, u.email, u.nickname, u.signature, u.head_img,
+        u.u_level, u.open_degree, u.face_img, u.fans_num,u.honor_degree,u.status,
+        i.id as infoId, title, img, content, praise, forward, i.status, browse_volume, i.create_time, i.update_time,
+        d.t_name as openDegree
+      FROM t_user u
+        JOIN u_info i on u.id = i.uid
+        JOIN u_open_degree d on i.oid = d.id
+      where i.id = #{infoId}
+    </select>
+
+</mapper>

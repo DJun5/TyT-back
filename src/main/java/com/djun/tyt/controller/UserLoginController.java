@@ -29,7 +29,7 @@ public class UserLoginController {
      * @return User Data
      */
     @ApiOperation(value = "账号密码登录" ,  notes="uName password")
-    @RequestMapping(value = "/Login",method = RequestMethod.POST)
+    @RequestMapping(value = "/login",method = RequestMethod.POST)
     public JSONResult login(String uName, String password){
         if (isEmpty(password)){
             return JSONResult.errorMsg("password参数为空");

@@ -2,6 +2,7 @@ package com.djun.tyt.serviceImpl;
 
 import com.djun.tyt.mapper.RecommendUserMapper;
 import com.djun.tyt.model.TUser;
+import com.djun.tyt.model.Vo.RecommendUserVo;
 import com.djun.tyt.service.RecommendUserService;
 import org.springframework.stereotype.Service;
 
@@ -12,7 +13,7 @@ public class RecommendUserServiceImpl implements RecommendUserService {
     @Resource
     private RecommendUserMapper mapper;
     @Override
-    public List<TUser> recommendFollow() {
+    public List<RecommendUserVo> recommendFollow() {
         return mapper.recommendFollow();
     }
 }

@@ -14,13 +14,7 @@ import javax.annotation.Resource;
 
 import static org.springframework.util.ObjectUtils.isEmpty;
 import static utils.Constant.PWD_KEY;
-/*
- @RequestMapping(value = "/getIp", method = RequestMethod.POST)
- @ResponseBody
- public String getIp(HttpServletRequest request) {
- return IpUtil.getIpAddr(request);
- }
- */
+
 @Api(description = "管理员")
 @RestController
 @RequestMapping("/Admin")
