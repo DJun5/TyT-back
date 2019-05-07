@@ -3,10 +3,9 @@ package com.djun.tyt.model;
 public class ULogin {
 
   private long id;
-  private String phone;
   private String password;
   private long uid;
-  private long lid;
+  private long loginTypeId;
   private java.sql.Timestamp loginTime;
   private String loginPlace;
   private String loginIp;
@@ -23,15 +22,6 @@ public class ULogin {
 
   public void setId(long id) {
     this.id = id;
-  }
-
-
-  public String getPhone() {
-    return phone;
-  }
-
-  public void setPhone(String phone) {
-    this.phone = phone;
   }
 
 
@@ -53,12 +43,12 @@ public class ULogin {
   }
 
 
-  public long getLid() {
-    return lid;
+  public long getLoginTypeId() {
+    return loginTypeId;
   }
 
-  public void setLid(long lid) {
-    this.lid = lid;
+  public void setLoginTypeId(long loginTypeId) {
+    this.loginTypeId = loginTypeId;
   }
 
 

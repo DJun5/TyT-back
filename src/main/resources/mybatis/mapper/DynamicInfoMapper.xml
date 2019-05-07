@@ -3,36 +3,62 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.djun.tyt.mapper.DynamicInfoMapper">
+
     <select id="queryAll" resultType="com.djun.tyt.model.Vo.DynamicInfoVo">
-      SELECT
-      i.id as infoId, i.uid as userId, i.title, i.img, i.content, i.praise, i.forward, i.status,
-      i.browse_volume,i.create_time, i.update_time,d.t_name as openDegree
-      from u_info i
-        JOIN u_open_degree d on i.oid = d.id
-        JOIN t_user u on i.uid = u.id
-      order by (i.praise) DESC
+       SELECT
+          i.id as infoId, i.uid as userId, i.title, i.content, i.praise, i.forward, i.status as infoStatus,
+          i.browse_volume, i.create_time as infoCreateTime,
+          u.u_name as username, u.phone, u.email, u.nickname, u.signature, u.head_img, u.u_level,
+          u.fans_num, u.honor_degree, u.status as userStatus,
+          d.t_name as InfoOpenDegree,
+          d2.t_name as userInfoOpenDegree,
+          f.t_name as infoType,
+          ii.img as infoImg
+         from u_info i
+             JOIN u_open_degree d on i.oid = d.id
+             JOIN t_user u on i.uid = u.id
+            LEFT JOIN u_open_degree d2 on d2.id = u.oid
+            LEFT JOIN info_type f on f.id = i.fid
+			LEFT JOIN u_info_img ii on ii.info_id = i.id
+        order by (i.praise) DESC
     </select>
     <select id="selectedByUserId" resultType="com.djun.tyt.model.Vo.DynamicInfoVo">
       SELECT
-        u.id as userId, u.u_name, u.type_id, u.phone, u.email, u.nickname, u.signature, u.head_img,
-        u.u_level, u.open_degree, u.face_img, u.fans_num,u.honor_degree, u.status,
-        i.id as infoId, title, img, content, praise, forward, i.status, browse_volume, i.create_time, i.update_time,
-        d.t_name as openDegree
-      FROM t_user u
-        JOIN u_info i on u.id = i.uid
-        JOIN u_open_degree d on i.oid = d.id
+          i.id as infoId, i.uid as userId, i.title, i.content, i.praise, i.forward, i.status as infoStatus,
+          i.browse_volume, i.create_time as infoCreateTime,
+          u.u_name as username, u.phone, u.email, u.nickname, u.signature, u.head_img, u.u_level,
+          u.fans_num, u.honor_degree, u.status as userStatus,
+          d.t_name as InfoOpenDegree,
+          d2.t_name as userInfoOpenDegree,
+          f.t_name as infoType,
+          ii.img as infoImg
+         from u_info i
+             JOIN u_open_degree d on i.oid = d.id
+             JOIN t_user u on i.uid = u.id
+            LEFT JOIN u_open_degree d2 on d2.id = u.oid
+            LEFT JOIN info_type f on f.id = i.fid
+			LEFT JOIN u_info_img ii on ii.info_id = i.id
       where u.id =#{userId}
+      order by (i.praise) DESC
     </select>
-  <select id="selectedByInfoId" resultType="com.djun.tyt.model.Vo.DynamicInfoVo">
+    <select id="selectedByInfoId" resultType="com.djun.tyt.model.Vo.DynamicInfoVo">
       SELECT
-        u.id as userId, u.u_name, u.type_id, u.phone, u.email, u.nickname, u.signature, u.head_img,
-        u.u_level, u.open_degree, u.face_img, u.fans_num,u.honor_degree,u.status,
-        i.id as infoId, title, img, content, praise, forward, i.status, browse_volume, i.create_time, i.update_time,
-        d.t_name as openDegree
-      FROM t_user u
-        JOIN u_info i on u.id = i.uid
-        JOIN u_open_degree d on i.oid = d.id
-      where i.id = #{infoId}
+          i.id as infoId, i.uid as userId, i.title, i.content, i.praise, i.forward, i.status as infoStatus,
+          i.browse_volume, i.create_time as infoCreateTime,
+          u.u_name as username, u.phone, u.email, u.nickname, u.signature, u.head_img, u.u_level,
+          u.fans_num, u.honor_degree, u.status as userStatus,
+          d.t_name as InfoOpenDegree,
+          d2.t_name as userInfoOpenDegree,
+          f.t_name as infoType,
+          ii.img as infoImg
+         from u_info i
+             JOIN u_open_degree d on i.oid = d.id
+             JOIN t_user u on i.uid = u.id
+            LEFT JOIN u_open_degree d2 on d2.id = u.oid
+            LEFT JOIN info_type f on f.id = i.fid
+			LEFT JOIN u_info_img ii on ii.info_id = i.id
+      where i.id =#{infoId}
+      order by (i.praise) DESC
     </select>
 
 </mapper>

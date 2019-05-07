@@ -1,6 +1,5 @@
 package com.djun.tyt.model.Vo;
 
-
 import java.util.Date;
 
 /**
@@ -8,9 +7,9 @@ import java.util.Date;
  */
 public class DynamicInfoVo {
     /**
-     * id
+     * InfoId
      */
-    private Integer infoId;
+    private int infoId;
     /**
      * 标题
      */
@@ -18,7 +17,7 @@ public class DynamicInfoVo {
     /**
      * 图片
      */
-    private String img;
+    private String infoImg;
     /**
      * 内容
      */
@@ -32,10 +31,6 @@ public class DynamicInfoVo {
      */
     private long forward;
     /**
-     * 状态：0为不显示，1为显示
-     */
-    private long status;
-    /**
      * 浏览量
      */
     private long browseVolume;
@@ -44,25 +39,65 @@ public class DynamicInfoVo {
      */
     private Date createTime;
     /**
-     * 修改时间
+     * 类别或标签
      */
-    private Date updateTime;
-    /**
-     * 一级分类名
-     */
-    private String fName;
-    /**
-     * 二级分类名
-     */
-    private String sName;
-    /**
-     * 三级分类名
-     */
-    private String tName;
+    private String infoType;
     /**
      * 公开显示程度
      */
-    private String openDegree;
+    private String infoOpenDegree;
+    /**
+     * 状态：0为不显示，1为显示
+     */
+    private long infoStatus;
+    /**
+     * 发布者id
+     */
+    private long userId;
+    /**
+     * 唯一用户名
+     */
+    private String username;
+    /**
+     * 昵称
+     */
+    private String nickname;
+    /**
+     * 个性签名
+     */
+    private String signature;
+    /**
+     * 电话号码
+     */
+    private String phone;
+    /**
+     * 邮箱
+     */
+    private String email;
+    /**
+     * 头像
+     */
+    private String headImg;
+    /**
+     * 等级
+     */
+    private int uLevel;
+    /**
+     * 粉丝数量
+     */
+    private int fansNum;
+    /**
+     * 信誉度
+     */
+    private int honorDegree;
+    /**
+     * 用户状态：1为正常、0为非正常
+     */
+    private int userStatus;
+    /**
+     * 用户信息公开程度
+     */
+    private String userInfoOpenDegree;
 
     public int getInfoId() {
         return infoId;
@@ -80,12 +115,12 @@ public class DynamicInfoVo {
         this.title = title;
     }
 
-    public String getImg() {
-        return img;
+    public String getInfoImg() {
+        return infoImg;
     }
 
-    public void setImg(String img) {
-        this.img = img;
+    public void setInfoImg(String infoImg) {
+        this.infoImg = infoImg;
     }
 
     public String getContent() {
@@ -112,14 +147,6 @@ public class DynamicInfoVo {
         this.forward = forward;
     }
 
-    public long getStatus() {
-        return status;
-    }
-
-    public void setStatus(long status) {
-        this.status = status;
-    }
-
     public long getBrowseVolume() {
         return browseVolume;
     }
@@ -136,43 +163,123 @@ public class DynamicInfoVo {
         this.createTime = createTime;
     }
 
-    public Date getUpdateTime() {
-        return updateTime;
+    public String getInfoType() {
+        return infoType;
     }
 
-    public void setUpdateTime(Date updateTime) {
-        this.updateTime = updateTime;
+    public void setInfoType(String infoType) {
+        this.infoType = infoType;
     }
 
-    public String getfName() {
-        return fName;
+    public String getInfoOpenDegree() {
+        return infoOpenDegree;
     }
 
-    public void setfName(String fName) {
-        this.fName = fName;
+    public void setInfoOpenDegree(String infoOpenDegree) {
+        this.infoOpenDegree = infoOpenDegree;
     }
 
-    public String getsName() {
-        return sName;
+    public long getInfoStatus() {
+        return infoStatus;
     }
 
-    public void setsName(String sName) {
-        this.sName = sName;
+    public void setInfoStatus(long infoStatus) {
+        this.infoStatus = infoStatus;
     }
 
-    public String gettName() {
-        return tName;
+    public long getUserId() {
+        return userId;
     }
 
-    public void settName(String tName) {
-        this.tName = tName;
+    public void setUserId(long userId) {
+        this.userId = userId;
     }
 
-    public String getOpenDegree() {
-        return openDegree;
+    public String getUsername() {
+        return username;
     }
 
-    public void setOpenDegree(String openDegree) {
-        this.openDegree = openDegree;
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getNickname() {
+        return nickname;
+    }
+
+    public void setNickname(String nickname) {
+        this.nickname = nickname;
+    }
+
+    public String getSignature() {
+        return signature;
+    }
+
+    public void setSignature(String signature) {
+        this.signature = signature;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getHeadImg() {
+        return headImg;
+    }
+
+    public void setHeadImg(String headImg) {
+        this.headImg = headImg;
+    }
+
+    public int getuLevel() {
+        return uLevel;
+    }
+
+    public void setuLevel(int uLevel) {
+        this.uLevel = uLevel;
+    }
+
+    public int getFansNum() {
+        return fansNum;
+    }
+
+    public void setFansNum(int fansNum) {
+        this.fansNum = fansNum;
+    }
+
+    public int getHonorDegree() {
+        return honorDegree;
+    }
+
+    public void setHonorDegree(int honorDegree) {
+        this.honorDegree = honorDegree;
+    }
+
+    public int getUserStatus() {
+        return userStatus;
+    }
+
+    public void setUserStatus(int userStatus) {
+        this.userStatus = userStatus;
+    }
+
+    public String getUserInfoOpenDegree() {
+        return userInfoOpenDegree;
+    }
+
+    public void setUserInfoOpenDegree(String userInfoOpenDegree) {
+        this.userInfoOpenDegree = userInfoOpenDegree;
     }
 }

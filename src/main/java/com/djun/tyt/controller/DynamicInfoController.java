@@ -19,14 +19,14 @@ public class DynamicInfoController {
     @Resource
     private DynamicInfoService service;
 
-    @ApiOperation(value = "获取全部动态数据",notes = "暂时后台未考虑分页，一次就取出全部数据")
+    @ApiOperation(value = "获取全部动态数据",notes = "start：起始数据条数\nend：结束数据条数")
     @RequestMapping(value = "/queryAll",method = RequestMethod.GET)
     public JSONResult queryAll(){
         return JSONResult.ok(service.queryAll());
     }
 
     @ApiOperation(value = "通过userId获取某用户动态数据",notes = "userId")
-    @RequestMapping(value = "/selectedByUserId",method = RequestMethod.POST)
+    @RequestMapping(value = "/selectedByUserId",method = RequestMethod.GET)
     public JSONResult selectedByUserId(int userId){
         if (!isEmpty(userId)){
             return JSONResult.ok(service.selectedByUserId(userId));
@@ -38,7 +38,7 @@ public class DynamicInfoController {
     }
 
     @ApiOperation(value = "通过infoId获取某用户动态数据",notes = "infoId")
-    @RequestMapping(value = "/selectedByInfoId",method = RequestMethod.POST)
+    @RequestMapping(value = "/selectedByInfoId",method = RequestMethod.GET)
     public JSONResult selectedByInfoId(int infoId){
         if (!isEmpty(infoId)){
             return JSONResult.ok(service.selectedByInfoId(infoId));

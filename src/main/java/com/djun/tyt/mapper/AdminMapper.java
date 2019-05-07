@@ -1,7 +1,6 @@
 package com.djun.tyt.mapper;
 
 import com.djun.tyt.model.Admin;
-import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
 
