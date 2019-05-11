@@ -2,21 +2,10 @@ package utils;
 
 import com.djun.tyt.model.Vo.UploadVo;
 import com.djun.tyt.service.UploadService;
-import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
-import sun.misc.BASE64Decoder;
-import sun.misc.BASE64Encoder;
 
-import java.io.IOException;
-import java.io.UnsupportedEncodingException;
-import java.nio.charset.StandardCharsets;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 import java.text.SimpleDateFormat;
-import java.util.Base64;
 import java.util.Date;
-
-import static org.springframework.util.ObjectUtils.isEmpty;
 
 
 public class FuncUtils {
@@ -32,10 +21,6 @@ public class FuncUtils {
         UploadVo uploadVo = new UploadVo();
         try {
             uploadVo = uploadService.upload(file, UPLOAD_PATH);
-            if (StringUtils.isEmpty(uploadVo.getUploadUrl())) {
-                JSONResult.ok("上传失败");
-            } else
-                JSONResult.ok("上传成功");
         } catch (Exception e) {
             e.printStackTrace();
         }

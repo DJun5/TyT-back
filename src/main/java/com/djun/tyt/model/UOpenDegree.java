@@ -14,7 +14,6 @@ public class UOpenDegree {
     this.id = id;
   }
 
-
   public String getTName() {
     return tName;
   }

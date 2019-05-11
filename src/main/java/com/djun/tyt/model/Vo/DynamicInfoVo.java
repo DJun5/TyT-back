@@ -1,10 +1,10 @@
 package com.djun.tyt.model.Vo;
 
-import java.util.Date;
+import io.swagger.annotations.ApiModel;
 
-/**
- * 动态全部的信息
- */
+import java.util.Date;
+@ApiModel(description = "动态全部的信息")
+
 public class DynamicInfoVo {
     /**
      * InfoId

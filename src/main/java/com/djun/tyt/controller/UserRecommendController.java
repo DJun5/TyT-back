@@ -1,6 +1,6 @@
 package com.djun.tyt.controller;
 
-import com.djun.tyt.service.RecommendUserService;
+import com.djun.tyt.service.UserRecommendService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,9 +13,9 @@ import javax.annotation.Resource;
 @Api(description = "推荐关注用户的数据")
 @RestController
 @RequestMapping("/User")
-public class RecommendUserController {
+public class UserRecommendController {
     @Resource
-    private RecommendUserService service;
+    private UserRecommendService service;
 
     @ApiOperation(value = "查询被推荐用户的信息",notes = "该接口仅能获取推荐用户的某些信息")
     @RequestMapping(value = "/recommend",method = RequestMethod.GET)

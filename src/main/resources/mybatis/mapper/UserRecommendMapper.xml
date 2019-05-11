@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.djun.tyt.mapper.UserRecommendMapper">
+    <!-- 定义查询关联动态的信息,将整个查询结果映射到UserRecommendVo中 -->
+    <resultMap type="com.djun.tyt.model.Vo.UserRecommendVo" id="userRecommendInfo">
+
+        <id column="id" property="userId"/>
+        <result column="username" property="username"/>
+        <result column="userType" property="userType"/>
+        <collection property="dynamicInfo" javaType="ArrayList"
+                    ofType="DynamicInfo" select="getDynamicInfo" column="id"/>
+    </resultMap>
+
+    <select id="recommendFollow" resultType="com.djun.tyt.model.Vo.UserRecommendVo">
+      SELECT
+        <include refid="ConstantSQL.userInfo"/>
+        uod.t_name as userInfoOpenDegree,ut.t_name as userType
+      FROM t_user u
+          join u_open_degree uod on u.oid = uod.id
+          LEFT JOIN u_type ut on u.tid = ut.id
+      where uod.id > 2 and  u.status > 0
+	  order by (u.fans_num) desc
+    </select>
+    <!-- ////////????????????///////////  -->
+    <select id="getDynamicInfo" resultType="com.djun.tyt.model.DynamicInfo">
+        SELECT
+            <include refid="ConstantSQL.dynamicInfo"/>
+            <include refid="ConstantSQL.dynamicImg"/>
+            d.t_name as dynamicInfoOPenDegree,f.t_name as infoType
+        from u_info i
+            JOIN u_open_degree d on i.oid = d.id
+            LEFT JOIN u_open_degree d2 on d2.id = u.oid
+            LEFT JOIN info_type f on f.id = i.fid
+            LEFT JOIN u_info_img ii on ii.info_id = i.id
+        order by (i.praise) DESC
+    </select>
+
+</mapper>

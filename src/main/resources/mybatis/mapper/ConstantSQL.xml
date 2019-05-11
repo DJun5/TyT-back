@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="ConstantSQL">
+    <!--///////// t_user 命名为 u //////////-->
+    <sql id="userInfo">
+        u.id as userId,
+        u.u_name as username,
+        u.phone,
+        u.face_img,
+        u.email,
+        u.nickname,
+        u.signature,
+        u.head_img as userHeadImg,
+        u.u_level,
+        u.fans_num,
+        u.honor_degree,
+        u.health_degree,
+        u.create_time as userCreateTime,
+        u.update_time as userUpdateTime,
+        u.status as userStatus,
+    </sql>
+    <!--///////// u_info 命名为 i//////////-->
+    <sql id="dynamicInfo">
+       i.id as infoId,
+       i.uid as userId,
+       i.title, i.content,
+       i.praise,
+       i.forward,
+       i.status as infoStatus,
+       i.browse_volume,
+       i.create_time as infoCreateTime,
+    </sql>
+    <!--///////// u_info_img 命名为 ii //////////-->
+    <sql id="dynamicImg">
+        ii.img1 as infoImg1,
+        ii.img2 as infoImg2,
+        ii.img3 as infoImg3,
+        ii.img4 as infoImg4,
+        ii.img5 as infoImg5,
+        ii.img6 as infoImg6,
+        ii.img7 as infoImg7,
+        ii.img8 as infoImg8,
+        ii.img9 as infoImg9,
+    </sql>
+
+</mapper>

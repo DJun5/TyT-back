@@ -19,7 +19,7 @@ public class DynamicInfoController {
     @Resource
     private DynamicInfoService service;
 
-    @ApiOperation(value = "获取全部动态数据",notes = "start：起始数据条数\nend：结束数据条数")
+    @ApiOperation(value = "获取全部动态数据",notes = "全部用户的全部动态")
     @RequestMapping(value = "/queryAll",method = RequestMethod.GET)
     public JSONResult queryAll(){
         return JSONResult.ok(service.queryAll());

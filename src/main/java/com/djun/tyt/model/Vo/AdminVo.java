@@ -1,8 +1,8 @@
 package com.djun.tyt.model.Vo;
 
-/**
- * 管理员信息
- */
+import io.swagger.annotations.ApiModel;
+
+@ApiModel(description = "管理员信息")
 public class AdminVo {
     private int id;
     /**

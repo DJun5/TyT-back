@@ -1,5 +1,8 @@
 package com.djun.tyt.model.Vo;
 
+import io.swagger.annotations.ApiModel;
+
+@ApiModel(description = "返回处理后上传文件的数据")
 public class UploadVo {
     //上传结果
     private String result;
