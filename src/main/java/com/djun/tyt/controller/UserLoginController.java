@@ -6,8 +6,6 @@ import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-import utils.Constant;
-import utils.EncryptUtil;
 import utils.JSONResult;
 import utils.ValidatorUtil;
 
@@ -26,7 +24,7 @@ public class UserLoginController {
      * 用户的三种登录方式
      * @param uName 账号（电话号码、学号、AI账号）
      * @param password 密码，前端上传密文
-     * @return User Data
+     * @return true or false
      */
     @ApiOperation(value = "账号密码登录" ,  notes="uName password")
     @RequestMapping(value = "/login",method = RequestMethod.POST)

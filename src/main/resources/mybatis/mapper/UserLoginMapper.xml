@@ -3,20 +3,20 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.djun.tyt.mapper.UserLoginMapper">
-    <select id="login" resultType="com.djun.tyt.model.TUser">
-       SELECT * FROM t_user u
+    <select id="login" resultType="int">
+       SELECT count(*) FROM t_user u
        JOIN u_login l on u.id = l.uid
        WHERE u.u_name = #{uName} and l.`password`=#{password}
     </select>
 
-    <select id="login2" resultType="com.djun.tyt.model.TUser">
-       SELECT * FROM u_login l
+    <select id="login2" resultType="int">
+       SELECT count(*) FROM u_login l
        JOIN t_user u on u.id = l.uid
        WHERE u.phone = #{mobile} and l.`password`=#{password}
     </select>
 
-    <select id="login3" resultType="com.djun.tyt.model.TUser">
-       SELECT * FROM u_login l
+    <select id="login3" resultType="int">
+       SELECT count(*) FROM u_login l
        JOIN t_user u on u.id = l.uid
        JOIN u_type ut on ut.id = u.type_id
        WHERE ut.account = #{account} and l.`password`=#{password}

@@ -3,65 +3,37 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.djun.tyt.mapper.DynamicInfoMapper">
-    <sql id="DynamicInfo">
-          i.id as infoId, i.uid as userId, i.title, i.content, i.praise, i.forward, i.status as infoStatus,i.browse_volume, i.create_time as infoCreateTime,
-          u.u_name as username, u.phone, u.email, u.nickname, u.signature, u.head_img, u.u_level,
-          u.fans_num, u.honor_degree, u.status as userStatus,
-          d.t_name as InfoOpenDegree,
-          d2.t_name as userInfoOpenDegree,
-          f.t_name as infoType,
-          ii.img1 as infoImg1, ii.img2 as infoImg2, ii.img3 as infoImg3, ii.img4 as infoImg4, ii.img5 as infoImg5, ii.img6 as infoImg6, ii.img7 as infoImg7, ii.img8 as infoImg8, ii.img9 as infoImg9
-    </sql>
-    <!--<resultMap id="test" type="com.djun.tyt.model" autoMapping="true">-->
-        <!--&lt;!&ndash;association:完成子对象的映射&ndash;&gt;-->
-        <!--&lt;!&ndash;property:子对象在父对象中的属性名&ndash;&gt;-->
-        <!--&lt;!&ndash;javaType:子对象的java类型&ndash;&gt;-->
-        <!--&lt;!&ndash;autoMapping:完成子对象的自动映射，若开启驼峰，则按驼峰匹配&ndash;&gt;-->
-        <!--<id column="id" property="id"/>-->
-        <!--<association property="userInfo" javaType="com.djun.tyt.model.UserInfo" autoMapping="true">-->
-            <!--<id column="userId" property="id"/>-->
-            <!--<id column="username" property="username"/>-->
-            <!--<id column="userType" property="userType"/>-->
-            <!--<id column="phone" property="phone"/>-->
-            <!--<id column="email" property="email"/>-->
-            <!--<id column="nickname" property="nickname"/>-->
-            <!--<id column="signature" property="signature"/>-->
-        <!--</association>-->
-    <!--</resultMap>-->
-    <select id="queryAll" resultType="com.djun.tyt.model.Vo.DynamicInfoVo">
-       SELECT
-        <include refid="DynamicInfo"/>
+
+    <select id="queryAll" resultType="com.djun.tyt.model.DynamicInfo">
+        SELECT
+            <include refid="ConstantSQL.dynamicInfo"/>
+            <include refid="ConstantSQL.dynamicImg"/>
+            <include refid="ConstantSQL.dynamicOpenDegree"/>
+            <include refid="ConstantSQL.dynamicType"/>
+        u.id as userId
         from u_info i
-             JOIN u_open_degree d on i.oid = d.id
-             JOIN t_user u on i.uid = u.id
-            LEFT JOIN u_open_degree d2 on d2.id = u.oid
-            LEFT JOIN info_type f on f.id = i.fid
-			LEFT JOIN u_info_img ii on ii.info_id = i.id
+            JOIN u_open_degree iod on i.oid = iod.id
+            JOIN t_user u on u.id = i.uid
+            LEFT JOIN info_type it on i.fid = it.id
+            LEFT JOIN u_info_img ii on i.id = ii.info_id
         order by (i.praise) DESC
     </select>
-    <select id="selectedByUserId" resultType="com.djun.tyt.model.Vo.DynamicInfoVo">
-      SELECT
-        <include refid="DynamicInfo"/>
-         from u_info i
-            JOIN u_open_degree d on i.oid = d.id
-            JOIN t_user u on i.uid = u.id
-            LEFT JOIN u_open_degree d2 on d2.id = u.oid
-            LEFT JOIN info_type f on f.id = i.fid
-			LEFT JOIN u_info_img ii on ii.info_id = i.id
-      where u.id =#{userId}
-      order by (i.praise) DESC
+
+    <select id="selectedByUserId" resultType="com.djun.tyt.model.DynamicInfo">
+        SELECT
+            <include refid="ConstantSQL.dynamicInfo"/>
+            <include refid="ConstantSQL.dynamicImg"/>
+            <include refid="ConstantSQL.dynamicOpenDegree"/>
+            <include refid="ConstantSQL.dynamicType"/>
+        u.id as userId
+        from u_info i
+            JOIN u_open_degree iod on i.oid = iod.id
+            JOIN t_user u on u.id = i.uid
+            LEFT JOIN info_type it on i.fid = it.id
+            LEFT JOIN u_info_img ii on i.id = ii.info_id
+        where u.id = #{userId}
+        order by (i.praise) DESC
     </select>
-    <select id="selectedByInfoId" resultType="com.djun.tyt.model.Vo.DynamicInfoVo">
-      SELECT
-        <include refid="DynamicInfo"/>
-         from u_info i
-             JOIN u_open_degree d on i.oid = d.id
-             JOIN t_user u on i.uid = u.id
-            LEFT JOIN u_open_degree d2 on d2.id = u.oid
-            LEFT JOIN info_type f on f.id = i.fid
-			LEFT JOIN u_info_img ii on ii.info_id = i.id
-      where i.id =#{infoId}
-      order by (i.praise) DESC
-    </select>
+
 
 </mapper>
