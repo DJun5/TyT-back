@@ -23,8 +23,4 @@ public class DynamicInfoServiceImpl implements DynamicInfoService {
         return mapper.selectedByUserId(userId);
     }
 
-    @Override
-    public List<DynamicInfoVo> selectedByInfoId(int infoId) {
-        return mapper.selectedByInfoId(infoId);
-    }
 }

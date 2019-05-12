@@ -1,6 +1,7 @@
 package com.djun.tyt.model;
 
 import io.swagger.annotations.ApiModel;
+
 import java.util.Date;
 
 @ApiModel(description = "用户信息")
@@ -85,6 +86,7 @@ public class UserInfo {
      * 用户状态1为正常、0为异常
      */
     private long userStatus;
+
 
     public long getUserId() {
         return userId;

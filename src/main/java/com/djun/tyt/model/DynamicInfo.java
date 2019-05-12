@@ -50,11 +50,11 @@ public class DynamicInfo {
     /**
      * 类别或标签
      */
-    private String infoType;
+    private String dynamicType;
     /**
      * 公开显示程度
      */
-    private String infoOpenDegree;
+    private String dynamicOpenDegree;
     /**
      * 状态：0为不显示，1为显示
      */
@@ -192,20 +192,20 @@ public class DynamicInfo {
         this.createTime = createTime;
     }
 
-    public String getInfoType() {
-        return infoType;
+    public String getDynamicType() {
+        return dynamicType;
     }
 
-    public void setInfoType(String infoType) {
-        this.infoType = infoType;
+    public void setDynamicType(String dynamicType) {
+        this.dynamicType = dynamicType;
     }
 
-    public String getInfoOpenDegree() {
-        return infoOpenDegree;
+    public String getDynamicOpenDegree() {
+        return dynamicOpenDegree;
     }
 
-    public void setInfoOpenDegree(String infoOpenDegree) {
-        this.infoOpenDegree = infoOpenDegree;
+    public void setDynamicOpenDegree(String dynamicOpenDegree) {
+        this.dynamicOpenDegree = dynamicOpenDegree;
     }
 
     public long getInfoStatus() {

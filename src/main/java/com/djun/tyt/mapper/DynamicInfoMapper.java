@@ -18,11 +18,4 @@ public interface DynamicInfoMapper {
      */
     List<DynamicInfoVo> selectedByUserId(int userId);
 
-    /**
-     * 通过动态的id来查询动态信息
-     * @param infoId 动态id
-     * @return  所有与动态有关的数据包
-     */
-    List<DynamicInfoVo> selectedByInfoId(int infoId);
-
 }

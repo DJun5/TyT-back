@@ -26,7 +26,7 @@ public class DynamicInfoController {
     }
 
     @ApiOperation(value = "通过userId获取某用户动态数据",notes = "userId")
-    @RequestMapping(value = "/selectedByUserId",method = RequestMethod.GET)
+    @RequestMapping(value = "/selectedByUserId",method = RequestMethod.POST)
     public JSONResult selectedByUserId(int userId){
         if (!isEmpty(userId)){
             return JSONResult.ok(service.selectedByUserId(userId));
@@ -37,16 +37,5 @@ public class DynamicInfoController {
         }
     }
 
-    @ApiOperation(value = "通过infoId获取某用户动态数据",notes = "infoId")
-    @RequestMapping(value = "/selectedByInfoId",method = RequestMethod.GET)
-    public JSONResult selectedByInfoId(int infoId){
-        if (!isEmpty(infoId)){
-            return JSONResult.ok(service.selectedByInfoId(infoId));
-        }else if (isEmpty(infoId)){
-            return JSONResult.errorMsg("infoId 参数为空");
-        }else{
-            return JSONResult.errorMsg("未知错误");
-        }
-    }
 
 }
