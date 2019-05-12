@@ -4,12 +4,17 @@
     <select id="queryById" resultType="com.djun.tyt.model.UserInfo">
         select
         <include refid="ConstantSQL.userInfo"/>
+        <include refid="ConstantSQL.userType"/>
+        <include refid="ConstantSQL.userOpenDegree"/>
          u.id as userId
         from t_user u
-        LEFT JOIN
-        where id=#{id}
+        LEFT JOIN u_type ut on u.tid=ut.id
+        LEFT join u_open_degree uod on u.oid=uod.id
+        where u.id=#{id}
     </select>
     <update id="update">
+        update  t_user u left join u_type ut on u.tid=ut.id left join u_open_degree uod on u.oid=uod.id set
 
+        where u.id=#{userId}
     </update>
 </mapper>

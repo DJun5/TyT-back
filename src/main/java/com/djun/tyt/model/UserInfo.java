@@ -1,7 +1,6 @@
 package com.djun.tyt.model;
 
 import io.swagger.annotations.ApiModel;
-
 import java.util.Date;
 
 @ApiModel(description = "用户信息")
@@ -54,10 +53,6 @@ public class UserInfo {
      * 粉丝数量
      */
     private long fansNum;
-    /**
-     * 粉丝的Id
-     */
-    private long fansId;
     /**
      * 黑名单中的userId
      */
@@ -182,14 +177,6 @@ public class UserInfo {
 
     public void setFansNum(long fansNum) {
         this.fansNum = fansNum;
-    }
-
-    public long getFansId() {
-        return fansId;
-    }
-
-    public void setFansId(long fansId) {
-        this.fansId = fansId;
     }
 
     public long getBlacklistUid() {

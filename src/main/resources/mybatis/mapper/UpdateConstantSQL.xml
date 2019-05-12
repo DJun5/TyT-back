@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="UpdateConstantSQL">
+    <!-- t_user 命名为 u -->
+    <sql id="userInfo">
+        u.u_name = #{username},
+        u.tid=#{userType},
+        u.phone=#{phone},
+        u.email=#{email},
+        u.nickname=#{nickname},
+        u.signature=#{signature},
+        u.head_img=#{userHeadImg},
+        u.u_level=#{uLevel},
+        u.oid=#{userInfoOpenDegree},
+        u.face_img=#{faceImg},
+        u.fans_num=#{fansNum},
+        u.blacklist_uid=#{blacklistUid},
+        u.experience=#{experience},
+        u.health_degree=#{healthDegree},
+        u.honor_degree=#{honorDegree},
+        u.create_time=#{userCreateTime},
+        u.update_time=#{userUpdateTime},
+        u.status=#{userStatus},
+    </sql>
+</mapper>
