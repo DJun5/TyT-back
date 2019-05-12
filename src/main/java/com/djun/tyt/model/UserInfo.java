@@ -2,7 +2,7 @@ package com.djun.tyt.model;
 
 import io.swagger.annotations.ApiModel;
 
-import java.sql.Timestamp;
+import java.util.Date;
 
 @ApiModel(description = "用户信息")
 public class UserInfo {
@@ -77,16 +77,15 @@ public class UserInfo {
     /**
      * 创建用户的时间
      */
-    private java.sql.Timestamp userCreateTime;
+    private Date userCreateTime;
     /**
      * 修改个人信息的时间
      */
-    private java.sql.Timestamp userUpdateTime;
+    private Date userUpdateTime;
     /**
      * 用户状态1为正常、0为异常
      */
     private long userStatus;
-
 
 
     public long getUserId() {
@@ -225,20 +224,20 @@ public class UserInfo {
         this.honorDegree = honorDegree;
     }
 
-    public Timestamp getCreateTime() {
+    public Date getUserCreateTime() {
         return userCreateTime;
     }
 
-    public void setCreateTime(Timestamp createTime) {
-        this.userCreateTime = createTime;
+    public void setUserCreateTime(Date userCreateTime) {
+        this.userCreateTime = userCreateTime;
     }
 
-    public Timestamp getUpdateTime() {
+    public Date getUserUpdateTime() {
         return userUpdateTime;
     }
 
-    public void setUpdateTime(Timestamp updateTime) {
-        this.userUpdateTime = updateTime;
+    public void setUserUpdateTime(Date userUpdateTime) {
+        this.userUpdateTime = userUpdateTime;
     }
 
     public long getUserStatus() {
