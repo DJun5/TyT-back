@@ -33,7 +33,7 @@ public class UserInfoController {
      * @param model 个人用户信息数据
      * @return ok
      */
-    @ApiOperation(value = "根据用户id修改用户信息",notes = "")
+    @ApiOperation(value = "修改用户信息",notes = "")
     @RequestMapping(value = "/update",method = RequestMethod.POST)
     public JSONResult update(UserInfo model){
         model.setUserUpdateTime(new Date());
