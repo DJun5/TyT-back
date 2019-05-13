@@ -1,6 +1,7 @@
-package com.djun.tyt.model;
+package com.djun.tyt.model.Pojo;
 
-public class UOpenDegree {
+
+public class UServiceType {
 
   private long id;
   private String tName;
@@ -13,6 +14,7 @@ public class UOpenDegree {
   public void setId(long id) {
     this.id = id;
   }
+
 
   public String getTName() {
     return tName;

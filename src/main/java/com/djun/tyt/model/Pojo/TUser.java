@@ -1,20 +1,20 @@
-package com.djun.tyt.model;
+package com.djun.tyt.model.Pojo;
+
 
 public class TUser {
 
   private long id;
   private String uName;
-  private long typeId;
+  private long tid;
   private String phone;
   private String email;
   private String nickname;
   private String signature;
   private String headImg;
   private long uLevel;
-  private long openDegree;
+  private long oid;
   private String faceImg;
   private long fansNum;
-  private long fansId;
   private long blacklistUid;
   private long experience;
   private long healthDegree;
@@ -42,12 +42,12 @@ public class TUser {
   }
 
 
-  public long getTypeId() {
-    return typeId;
+  public long getTid() {
+    return tid;
   }
 
-  public void setTypeId(long typeId) {
-    this.typeId = typeId;
+  public void setTid(long tid) {
+    this.tid = tid;
   }
 
 
@@ -105,12 +105,12 @@ public class TUser {
   }
 
 
-  public long getOpenDegree() {
-    return openDegree;
+  public long getOid() {
+    return oid;
   }
 
-  public void setOpenDegree(long openDegree) {
-    this.openDegree = openDegree;
+  public void setOid(long oid) {
+    this.oid = oid;
   }
 
 
@@ -129,15 +129,6 @@ public class TUser {
 
   public void setFansNum(long fansNum) {
     this.fansNum = fansNum;
-  }
-
-
-  public long getFansId() {
-    return fansId;
-  }
-
-  public void setFansId(long fansId) {
-    this.fansId = fansId;
   }
 
 

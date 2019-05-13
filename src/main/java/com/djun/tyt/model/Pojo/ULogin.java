@@ -1,4 +1,5 @@
-package com.djun.tyt.model;
+package com.djun.tyt.model.Pojo;
+
 
 public class ULogin {
 
