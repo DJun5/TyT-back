@@ -12,7 +12,7 @@ import utils.JSONResult;
 import javax.annotation.Resource;
 import java.util.Date;
 
-@Api(value = "个人用户信息")
+@Api(description = "个人用户信息")
 @RestController
 public class UserInfoController {
     @Resource

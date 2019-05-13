@@ -10,7 +10,7 @@ import utils.JSONResult;
 
 import javax.annotation.Resource;
 
-@Api(value = "显示粉丝")
+@Api(description ="显示粉丝")
 @RestController
 public class ShowFansController {
         @Resource
@@ -18,7 +18,7 @@ public class ShowFansController {
         /**
          *
          * @param userId
-         * @return
+         * @return ok
          */
         @ApiOperation(value = "根据用户userId查询粉丝",notes = "")
         @RequestMapping(value = "/show",method = RequestMethod.POST)
