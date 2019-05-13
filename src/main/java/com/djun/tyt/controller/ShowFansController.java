@@ -17,11 +17,11 @@ public class ShowFansController {
         ShowFansService service;
         /**
          *
-         * @param userId
+         * @param userId  被关注者id
          * @return ok
          */
-        @ApiOperation(value = "根据用户userId查询粉丝",notes = "")
-        @RequestMapping(value = "/show",method = RequestMethod.POST)
+        @ApiOperation(value = "根据用户userId查询粉丝",notes = "查询用户所有的粉丝")
+        @RequestMapping(value = "/showAllFans",method = RequestMethod.POST)
         public JSONResult showFans(int userId){
                 return JSONResult.ok(service.showFans(userId));
         }
