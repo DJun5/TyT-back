@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.djun.tyt.mapper.ShowFansMapper">
+    <select id="showFans" resultType="com.djun.tyt.model.UserInfo">
+      SELECT
+        <include refid="ConstantSQL.userInfo"/>
+        <include refid="ConstantSQL.userType"/>
+        <include refid="ConstantSQL.userOpenDegree"/>
+        u.id as userId
+        from t_user u  LEFT JOIN u_type ut on u.tid=ut.id
+        LEFT join u_open_degree uod on u.oid=uod.id where u.id in(
+	    SELECT fan_id from u_fans where uid=#{userId})
+    </select>
+
+</mapper>
