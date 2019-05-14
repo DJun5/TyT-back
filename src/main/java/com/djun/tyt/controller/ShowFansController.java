@@ -12,6 +12,7 @@ import javax.annotation.Resource;
 
 @Api(description ="显示粉丝")
 @RestController
+@RequestMapping("/User")
 public class ShowFansController {
         @Resource
         ShowFansService service;
@@ -21,7 +22,7 @@ public class ShowFansController {
          * @return ok
          */
         @ApiOperation(value = "根据用户userId查询粉丝",notes = "查询用户所有的粉丝")
-        @RequestMapping(value = "/showAllFans",method = RequestMethod.POST)
+        @RequestMapping(value = "/showAllFans.do",method = RequestMethod.POST)
         public JSONResult showFans(int userId){
                 return JSONResult.ok(service.showFans(userId));
         }
