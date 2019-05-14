@@ -25,9 +25,9 @@
     <sql id="userOpenDegree">
         uod.t_name as userInfoOpenDegree,
     </sql>
-    <!-- u_info_type 命名为 uit -->
+    <!-- u_type 命名为 ut -->
     <sql id="userType">
-        uit.t_name as userType,
+        ut.t_name as userType,
     </sql>
     <!-- u_info 命名为 i -->
     <sql id="dynamicInfo">

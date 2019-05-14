@@ -1,7 +1,7 @@
 package com.djun.tyt.serviceImpl;
 
 import com.djun.tyt.mapper.DynamicInfoMapper;
-import com.djun.tyt.model.Vo.DynamicInfoVo;
+import com.djun.tyt.model.DynamicInfo;
 import com.djun.tyt.service.DynamicInfoService;
 import org.springframework.stereotype.Service;
 
@@ -14,12 +14,12 @@ public class DynamicInfoServiceImpl implements DynamicInfoService {
     private DynamicInfoMapper mapper;
 
     @Override
-    public List<DynamicInfoVo> queryAll() {
+    public List<DynamicInfo> queryAll() {
         return mapper.queryAll();
     }
 
     @Override
-    public List<DynamicInfoVo> selectedByUserId(int userId) {
+    public List<DynamicInfo> selectedByUserId(int userId) {
         return mapper.selectedByUserId(userId);
     }
 
