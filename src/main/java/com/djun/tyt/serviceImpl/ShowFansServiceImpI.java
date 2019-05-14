@@ -8,7 +8,7 @@ import javax.annotation.Resource;
 import java.util.List;
 
 @Service
-public class ShowFansImpI implements ShowFansService {
+public class ShowFansServiceImpI implements ShowFansService {
     @Resource
     ShowFansMapper mapper;
     public List<UserInfo> showFans(int userId){
