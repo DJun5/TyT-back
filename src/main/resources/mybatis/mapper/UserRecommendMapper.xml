@@ -14,8 +14,7 @@
         <!--<association column="id" javaType="com.djun.tyt.model.DynamicInfo" property="dynamicInfo" autoMapping="true"-->
                      <!--select="com.djun.tyt.mapper.UserRecommendMapper.getDynamicInfo"/>-->
     <!--</resultMap>-->
-
-    <select id="recommendFollow" resultMap="userRecommendInfo">
+    <select id="queryAll" resultType="com.djun.tyt.model.UserInfo">
         SELECT
           <include refid="ConstantSQL.userInfo"/>
           <include refid="ConstantSQL.userOpenDegree"/>
@@ -26,6 +25,7 @@
           LEFT JOIN u_type ut on u.tid = ut.id
         where uod.id > 2 and  u.status > 0
         order by (u.fans_num) desc
+        LIMIT 0,20
     </select>
 
 </mapper>

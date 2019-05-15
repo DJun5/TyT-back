@@ -20,7 +20,7 @@ public class UserInfoController {
     UserInfoService service;
 
     /**
-     *
+     *  selectById
      * @param id  用户userId
      * @return ok
      */
@@ -30,12 +30,11 @@ public class UserInfoController {
         return JSONResult.ok(service.queryById(id));
     }
     /**
-     *
+     *  update
      * @param model 个人用户信息数据
      * @return ok
-     * 说明：修改、删除、插入都用这一接口，前台采用表单方式提交用户所有显示的数据，每一次提交内容里面必须要有userId
      */
-    @ApiOperation(value = "修改用户信息",notes = "修改用户所有信息")
+    @ApiOperation(value = "修改用户信息",notes = "修改、删除、插入都用这一接口，前台采用表单方式提交用户所有显示的数据，每一次提交内容里面必须要有userId")
     @RequestMapping(value = "/update.do",method = RequestMethod.PUT)
     public JSONResult update(UserInfo model){
         model.setUserUpdateTime(new Date());

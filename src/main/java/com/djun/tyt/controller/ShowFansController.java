@@ -26,4 +26,6 @@ public class ShowFansController {
         public JSONResult showFans(int userId){
                 return JSONResult.ok(service.showFans(userId));
         }
+
+
 }

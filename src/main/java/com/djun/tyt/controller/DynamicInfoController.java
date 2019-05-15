@@ -20,13 +20,13 @@ public class DynamicInfoController {
     private DynamicInfoService service;
 
     @ApiOperation(value = "获取全部动态数据",notes = "全部用户的全部动态")
-    @RequestMapping(value = "/queryAll",method = RequestMethod.GET)
+    @RequestMapping(value = "/queryAll.do",method = RequestMethod.GET)
     public JSONResult queryAll(){
         return JSONResult.ok(service.queryAll());
     }
 
     @ApiOperation(value = "通过userId获取某用户动态数据",notes = "userId")
-    @RequestMapping(value = "/selectedByUserId",method = RequestMethod.POST)
+    @RequestMapping(value = "/selectedByUserId.do",method = RequestMethod.POST)
     public JSONResult selectedByUserId(int userId){
         if (!isEmpty(userId)){
             return JSONResult.ok(service.selectedByUserId(userId));

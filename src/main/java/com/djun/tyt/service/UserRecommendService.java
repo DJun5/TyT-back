@@ -1,12 +1,12 @@
 package com.djun.tyt.service;
 
 
-import com.djun.tyt.model.Vo.UserRecommendVo;
+import com.djun.tyt.model.UserInfo;
 
 import java.util.List;
 
 public interface UserRecommendService {
 
-    List<UserRecommendVo> recommendFollow();
+    List<UserInfo> queryAll();
 
 }

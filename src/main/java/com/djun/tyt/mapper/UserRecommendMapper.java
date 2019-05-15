@@ -1,11 +1,12 @@
 package com.djun.tyt.mapper;
 
-import com.djun.tyt.model.Vo.UserRecommendVo;
+
+import com.djun.tyt.model.UserInfo;
 
 import java.util.List;
 
 public interface UserRecommendMapper {
 
-    List<UserRecommendVo> recommendFollow();
+    List<UserInfo> queryAll();
 
 }
