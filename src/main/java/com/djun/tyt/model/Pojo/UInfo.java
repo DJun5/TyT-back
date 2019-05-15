@@ -1,7 +1,7 @@
 package com.djun.tyt.model.Pojo;
 
 
-public class UInfo {
+public class UInfo{
 
   private long id;
   private long fid;
