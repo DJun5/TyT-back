@@ -4,45 +4,28 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.djun.tyt.mapper.UserRecommendMapper">
     <!-- 定义查询关联动态的信息,将整个查询结果映射到UserRecommendVo中 -->
-    <resultMap id="userRecommendInfo" type="com.djun.tyt.model.Vo.UserRecommendVo" >
+    <!--<resultMap id="userRecommendInfo" type="com.djun.tyt.model.Vo.UserRecommendVo">-->
         <!--association:完成子对象的自动映射，需要开启autoMapping-->
         <!--property:子对象在父对象中的属性名-->
         <!--javaType:子对象的java类型-->
         <!--autoMapping:完成子对象的自动映射，若开启驼峰，则按驼峰匹配-->
-        <id column="id" property="userId"/>
-        <collection property="dynamicInfo" javaType="List" ofType="com.djun.tyt.model.DynamicInfo"
-                    select="getDynamicInfo" column="id" autoMapping="true">
-            <id column="id" property="userId"/>
-            <result column="img1" property="infoImg1"/>
-        </collection>
-    </resultMap>
+        <!--<association javaType="com.djun.tyt.model.UserInfo" property="userInfo" autoMapping="true"/>-->
+        <!-- 传多个参数{prop1=col1,prop2=col2} -->
+        <!--<association column="id" javaType="com.djun.tyt.model.DynamicInfo" property="dynamicInfo" autoMapping="true"-->
+                     <!--select="com.djun.tyt.mapper.UserRecommendMapper.getDynamicInfo"/>-->
+    <!--</resultMap>-->
 
-    <!--<select id="recommendFollow" resultType="com.djun.tyt.model.UserInfo">-->
     <select id="recommendFollow" resultMap="userRecommendInfo">
-      SELECT
-        <include refid="ConstantSQL.userInfo"/>
-        <include refid="ConstantSQL.userOpenDegree"/>
-        <include refid="ConstantSQL.userType"/>
+        SELECT
+          <include refid="ConstantSQL.userInfo"/>
+          <include refid="ConstantSQL.userOpenDegree"/>
+          <include refid="ConstantSQL.userType"/>
         u.id as userId
-      FROM t_user u
+        FROM t_user u
           join u_open_degree uod on u.oid = uod.id
           LEFT JOIN u_type ut on u.tid = ut.id
-      where uod.id > 2 and  u.status > 0
-	  order by (u.fans_num) desc
-    </select>
-
-    <select id="getDynamicInfo" resultType="com.djun.tyt.model.DynamicInfo">
-        SELECT
-            <include refid="ConstantSQL.dynamicInfo"/>
-            <include refid="ConstantSQL.dynamicImg"/>
-            <include refid="ConstantSQL.dynamicOpenDegree"/>
-            <include refid="ConstantSQL.dynamicType"/>
-            i.id as infoId
-        from u_info i
-            JOIN u_open_degree iod on i.oid = iod.id
-            LEFT JOIN info_type it on it.id = i.fid
-            LEFT JOIN u_info_img ii on ii.info_id = i.id
-        order by (i.praise) DESC
+        where uod.id > 2 and  u.status > 0
+        order by (u.fans_num) desc
     </select>
 
 </mapper>

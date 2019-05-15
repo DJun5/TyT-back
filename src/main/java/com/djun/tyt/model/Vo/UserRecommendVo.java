@@ -4,18 +4,25 @@ import com.djun.tyt.model.DynamicInfo;
 import com.djun.tyt.model.UserInfo;
 import io.swagger.annotations.ApiModel;
 
-import java.util.List;
-
 @ApiModel(description = "被推荐关注的用户信息")
-public class UserRecommendVo extends UserInfo {
+public class UserRecommendVo {
 
-    private List<DynamicInfo> DynamicInfo;
+    private UserInfo userInfo;
+    private DynamicInfo dynamicInfo;
 
-    public List<DynamicInfo> getDynamicInfo() {
-        return DynamicInfo;
+    public UserInfo getUserInfo() {
+        return userInfo;
     }
 
-    public void setDynamicInfo(List<DynamicInfo> dynamicInfo) {
-        DynamicInfo = dynamicInfo;
+    public void setUserInfo(UserInfo userInfo) {
+        this.userInfo = userInfo;
+    }
+
+    public DynamicInfo getDynamicInfo() {
+        return dynamicInfo;
+    }
+
+    public void setDynamicInfo(DynamicInfo dynamicInfo) {
+        this.dynamicInfo = dynamicInfo;
     }
 }
