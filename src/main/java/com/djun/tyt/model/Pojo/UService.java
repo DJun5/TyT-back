@@ -1,6 +1,8 @@
 package com.djun.tyt.model.Pojo;
 
 
+import java.util.Date;
+
 public class UService {
 
   private long id;
@@ -8,8 +10,8 @@ public class UService {
   private long uid;
   private String sName;
   private String description;
-  private java.sql.Timestamp createTime;
-  private java.sql.Timestamp ustime;
+  private Date createTime;
+  private Date ustime;
   private long status;
 
 
@@ -58,20 +60,20 @@ public class UService {
   }
 
 
-  public java.sql.Timestamp getCreateTime() {
+  public Date getCreateTime() {
     return createTime;
   }
 
-  public void setCreateTime(java.sql.Timestamp createTime) {
+  public void setCreateTime(Date createTime) {
     this.createTime = createTime;
   }
 
 
-  public java.sql.Timestamp getUstime() {
+  public Date getUstime() {
     return ustime;
   }
 
-  public void setUstime(java.sql.Timestamp ustime) {
+  public void setUstime(Date ustime) {
     this.ustime = ustime;
   }
 

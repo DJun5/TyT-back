@@ -1,6 +1,8 @@
 package com.djun.tyt.model.Pojo;
 
 
+import java.util.Date;
+
 public class UInfo{
 
   private long id;
@@ -13,8 +15,8 @@ public class UInfo{
   private long forward;
   private long status;
   private long browseVolume;
-  private java.sql.Timestamp createTime;
-  private java.sql.Timestamp updateTime;
+  private Date createTime;
+  private Date updateTime;
 
 
   public long getId() {
@@ -107,20 +109,20 @@ public class UInfo{
   }
 
 
-  public java.sql.Timestamp getCreateTime() {
+  public Date getCreateTime() {
     return createTime;
   }
 
-  public void setCreateTime(java.sql.Timestamp createTime) {
+  public void setCreateTime(Date createTime) {
     this.createTime = createTime;
   }
 
 
-  public java.sql.Timestamp getUpdateTime() {
+  public Date getUpdateTime() {
     return updateTime;
   }
 
-  public void setUpdateTime(java.sql.Timestamp updateTime) {
+  public void setUpdateTime(Date updateTime) {
     this.updateTime = updateTime;
   }
 

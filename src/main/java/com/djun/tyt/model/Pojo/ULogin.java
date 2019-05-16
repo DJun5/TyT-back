@@ -1,18 +1,20 @@
 package com.djun.tyt.model.Pojo;
 
 
+import java.util.Date;
+
 public class ULogin {
 
   private long id;
   private String password;
   private long uid;
   private long loginTypeId;
-  private java.sql.Timestamp loginTime;
+  private Date loginTime;
   private String loginPlace;
   private String loginIp;
   private String loginToken;
   private String lastLoginIp;
-  private java.sql.Timestamp lastLoginTime;
+  private Date lastLoginTime;
   private String lastLoginPlace;
   private String lastLoginToken;
 
@@ -53,11 +55,11 @@ public class ULogin {
   }
 
 
-  public java.sql.Timestamp getLoginTime() {
+  public Date getLoginTime() {
     return loginTime;
   }
 
-  public void setLoginTime(java.sql.Timestamp loginTime) {
+  public void setLoginTime(Date loginTime) {
     this.loginTime = loginTime;
   }
 
@@ -98,11 +100,11 @@ public class ULogin {
   }
 
 
-  public java.sql.Timestamp getLastLoginTime() {
+  public Date getLastLoginTime() {
     return lastLoginTime;
   }
 
-  public void setLastLoginTime(java.sql.Timestamp lastLoginTime) {
+  public void setLastLoginTime(Date lastLoginTime) {
     this.lastLoginTime = lastLoginTime;
   }
 

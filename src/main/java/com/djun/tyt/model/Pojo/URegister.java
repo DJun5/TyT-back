@@ -1,10 +1,12 @@
 package com.djun.tyt.model.Pojo;
 
 
+import java.util.Date;
+
 public class URegister {
 
   private long id;
-  private java.sql.Timestamp rTime;
+  private Date rTime;
   private long typeId;
   private long uid;
   private long userStatus;
@@ -19,11 +21,11 @@ public class URegister {
   }
 
 
-  public java.sql.Timestamp getRTime() {
+  public Date getRTime() {
     return rTime;
   }
 
-  public void setRTime(java.sql.Timestamp rTime) {
+  public void setRTime(Date rTime) {
     this.rTime = rTime;
   }
 
