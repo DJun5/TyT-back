@@ -13,8 +13,8 @@ public class UserInfoServiceImpI implements UserInfoService {
     @Resource
     private UserInfoMapper mapper;
     @Override
-    public List<UserInfo> queryById(int id){
-        return mapper.queryById(id);
+    public List<UserInfo> queryAll(){
+        return mapper.queryAll();
     }
 
     @Override

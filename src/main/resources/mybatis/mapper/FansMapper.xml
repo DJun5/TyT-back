@@ -1,14 +1,17 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.djun.tyt.mapper.ShowFollowersMapper">
-    <select id="showFollowers" resultType="com.djun.tyt.model.UserInfo">
-        select
+<mapper namespace="com.djun.tyt.mapper.FansMapper">
+    <select id="showFans" resultType="com.djun.tyt.model.UserInfo">
+      SELECT
         <include refid="ConstantSQL.userInfo"/>
         <include refid="ConstantSQL.userType"/>
         <include refid="ConstantSQL.userOpenDegree"/>
         u.id as userId
         from t_user u  LEFT JOIN u_type ut on u.tid=ut.id
         LEFT join u_open_degree uod on u.oid=uod.id where u.id in(
-        SELECT uid from u_fans where fan_id=#{userId})
+	    SELECT fan_id from u_fans where uid=#{userId})
     </select>
+    <update id="delete">
+        update u_fans set status=0 where uid=#{uid}
+    </update>
 </mapper>

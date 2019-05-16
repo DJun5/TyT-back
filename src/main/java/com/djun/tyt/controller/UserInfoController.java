@@ -20,14 +20,13 @@ public class UserInfoController {
     UserInfoService service;
 
     /**
-     *  selectById
-     * @param id  用户userId
+     * queryAll
      * @return ok
      */
-    @ApiOperation(value ="根据id查询用户信息",notes ="查询此用户所有信息")
-    @RequestMapping(value = "/selectById.do",method = RequestMethod.POST)
-    public JSONResult queryById(int id){
-        return JSONResult.ok(service.queryById(id));
+    @ApiOperation(value ="查询所有用户信息",notes ="查询所有用户的所有信息")
+    @RequestMapping(value = "/queryAll",method = RequestMethod.GET)
+    public JSONResult queryAll(){
+        return JSONResult.ok(service.queryAll());
     }
     /**
      *  update
@@ -35,7 +34,7 @@ public class UserInfoController {
      * @return ok
      */
     @ApiOperation(value = "修改用户信息",notes = "修改、删除、插入都用这一接口，前台采用表单方式提交用户所有显示的数据，每一次提交内容里面必须要有userId")
-    @RequestMapping(value = "/update.do",method = RequestMethod.PUT)
+    @RequestMapping(value = "/update.do",method = RequestMethod.POST)
     public JSONResult update(UserInfo model){
         model.setUserUpdateTime(new Date());
         service.update(model);
