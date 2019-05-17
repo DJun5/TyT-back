@@ -12,7 +12,9 @@ import utils.JSONResult;
 import javax.annotation.Resource;
 import java.util.Date;
 import java.util.List;
-import java.util.TimeZone;
+
+import static org.springframework.util.ObjectUtils.isEmpty;
+
 
 @Api(description = "用户关注者")
 @RestController
@@ -29,7 +31,11 @@ public class FollowersController {
     @ApiOperation(value = "用户通过userId查询关注者",notes = "查询该用户所有的关注者")
     @RequestMapping(value = "/selectByUserId.do",method= RequestMethod.POST)
     public JSONResult showFollowers(int userId){
-        return JSONResult.ok(service.showFollowers(userId));
+        if(userId!=0)
+            return JSONResult.ok(service.showFollowers(userId));
+        else{
+            return JSONResult.errorMsg("userId参数为空");
+        }
     }
 
     /**
@@ -40,22 +46,29 @@ public class FollowersController {
     @RequestMapping(value = "/addSubmit.do",method = RequestMethod.POST)
     public JSONResult addFollower(UFans model){
         List<UFans> list=service.selectFollwers(model);
-        if(list.isEmpty()){
-            model.setCreateTime(new Date());
-            service.addFollowers(model);
-            return JSONResult.ok("关注成功");
-        }else{
-            model.setUpdateTime(new Date());
-            service.updateFollower(model);
-            return JSONResult.ok("关注成功");
+        if(model.getFanId()!=0&model.getUid()!=0){
+            if(list.isEmpty()){
+                model.setCreateTime(new Date());
+                service.addFollowers(model);
+                return JSONResult.ok("关注成功");
+            }else{
+                model.setUpdateTime(new Date());
+                service.updateFollower(model);
+                return JSONResult.ok("关注成功");
+            }
+        }else {
+            return JSONResult.errorMsg("fanId或uid为空");
         }
     }
     @ApiOperation(value = "当前登录用户通过userId取消对别人的关注",notes="修改粉丝必须将当前登录者fan_id，被关注者uid传入后台")
     @RequestMapping(value = "/update.do",method = RequestMethod.PUT)
     public JSONResult updateStatus(UFans model){
-        model.setUpdateTime(new Date());
-        service.cancelFollower(model);
-        return JSONResult.ok("取消关注成功");
+        if(model.getFanId()!=0&model.getUid()!=0){
+            model.setUpdateTime(new Date());
+            service.cancelFollower(model);
+            return JSONResult.ok("取消关注成功");
+        }else {
+            return JSONResult.errorMsg("fanId或uid为空");
+        }
     }
-
 }

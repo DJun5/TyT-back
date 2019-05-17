@@ -10,6 +10,8 @@ import utils.JSONResult;
 
 import javax.annotation.Resource;
 
+import static org.springframework.util.ObjectUtils.isEmpty;
+
 @Api(description ="粉丝")
 @RestController
 @RequestMapping("/Fans")
