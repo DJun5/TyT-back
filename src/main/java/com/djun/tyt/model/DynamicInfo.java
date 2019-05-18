@@ -1,9 +1,7 @@
 package com.djun.tyt.model;
 
 import io.swagger.annotations.ApiModel;
-
 import java.util.Date;
-
 
 @ApiModel(description = "用户发布的动态信息")
 public class DynamicInfo {
@@ -46,7 +44,11 @@ public class DynamicInfo {
     /**
      * 创建时间
      */
-    private Date createTime;
+    private Date dynamicCreateTime;
+    /**
+     * 修改时间
+     */
+    private Date dynamicUpdateTime;
     /**
      * 类别或标签
      */
@@ -58,7 +60,7 @@ public class DynamicInfo {
     /**
      * 状态：0为不显示，1为显示
      */
-    private long infoStatus;
+    private long dynamicStatus;
     /**
      * 发布者id
      */
@@ -184,14 +186,6 @@ public class DynamicInfo {
         this.browseVolume = browseVolume;
     }
 
-    public Date getCreateTime() {
-        return createTime;
-    }
-
-    public void setCreateTime(Date createTime) {
-        this.createTime = createTime;
-    }
-
     public String getDynamicType() {
         return dynamicType;
     }
@@ -208,12 +202,28 @@ public class DynamicInfo {
         this.dynamicOpenDegree = dynamicOpenDegree;
     }
 
-    public long getInfoStatus() {
-        return infoStatus;
+    public Date getDynamicCreateTime() {
+        return dynamicCreateTime;
     }
 
-    public void setInfoStatus(long infoStatus) {
-        this.infoStatus = infoStatus;
+    public void setDynamicCreateTime(Date dynamicCreateTime) {
+        this.dynamicCreateTime = dynamicCreateTime;
+    }
+
+    public Date getDynamicUpdateTime() {
+        return dynamicUpdateTime;
+    }
+
+    public void setDynamicUpdateTime(Date dynamicUpdateTime) {
+        this.dynamicUpdateTime = dynamicUpdateTime;
+    }
+
+    public long getDynamicStatus() {
+        return dynamicStatus;
+    }
+
+    public void setDynamicStatus(long dynamicStatus) {
+        this.dynamicStatus = dynamicStatus;
     }
 
     public long getUserId() {

@@ -33,12 +33,14 @@
     <sql id="dynamicInfo">
        i.id as infoId,
        i.uid as userId,
-       i.title, i.content,
+       i.title,
+       i.content,
        i.praise,
        i.forward,
-       i.status as infoStatus,
+       i.status as dynamicStatus,
        i.browse_volume,
-       i.create_time as infoCreateTime,
+       i.create_time as dynamicCreateTime,
+       i.update_time as dynamicUpdateTime,
     </sql>
     <!-- u_info_img 命名为 ii -->
     <sql id="dynamicImg">
@@ -60,5 +62,4 @@
     <sql id="dynamicType">
         it.t_name as dynamicType,
     </sql>
-
 </mapper>
