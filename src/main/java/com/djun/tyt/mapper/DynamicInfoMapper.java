@@ -18,4 +18,16 @@ public interface DynamicInfoMapper {
      */
     List<DynamicInfo> selectedByUserId(int userId);
 
+    /**
+     * 通过发布者id新增动态
+     * @param model 发布者发布一条动态将用户id、公开程度、标题、内容、动态是否显示参数一并传入后台
+     */
+    void AddDynamic(DynamicInfo model);
+
+    /**
+     *
+     * @param id 当前登录者id
+     * @return 动态信息
+     */
+    List<DynamicInfo> queryDynamic(int id);
 }
