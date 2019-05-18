@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.djun.tyt.mapper.UserServiceMapper">
+
+    <select id="selectByServiceId" resultType="com.djun.tyt.model.UserService">
+        select
+            <include refid="ConstantSQL.userService"/>
+            <include refid="ConstantSQL.userServiceType"/>
+            u.id as userId
+        from u_service us
+        JOIN t_user u ON us.uid = u.id
+        LEFT JOIN u_service_type ust on ust.id = us.tid
+        where us.id = #{serviceId}
+    </select>
+    <update id="">
+
+
+    </update>
+
+</mapper>
