@@ -12,7 +12,6 @@ import utils.JSONResult;
 import javax.annotation.Resource;
 import java.util.Date;
 
-
 @Api(description = "个人用户信息")
 @RestController
 @RequestMapping("/User")
@@ -38,7 +37,6 @@ public class UserInfoController {
     @RequestMapping(value = "/update.do",method = RequestMethod.POST)
     public JSONResult update(UserInfo model){
         if(model.getUserId()!=0){
-            System.out.println("userId::::"+model.getUserId());
             model.setUserUpdateTime(new Date());
             service.update(model);
             return JSONResult.ok("修改成功");
