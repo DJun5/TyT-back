@@ -38,20 +38,58 @@ public class DynamicInfoController {
     }
 
     /**
-     *
-     * @param model  用户发布的动态信息以及公开程度等其他信息
-     * @return ok
+     * @param model  动态信息
+     * @return
      */
-//    @ApiOperation(value = "用户发布动态",notes ="用户当前发布的一条动态")
-////    @RequestMapping(value = "/addSubmit.do",method = RequestMethod.POST)
-////    public JSONResult AddDynamic(DynamicInfo model){
-////        model.setCreateTime(new Date());
-////        service.AddDynamic(model);
-////        return JSONResult.ok("发布成功");
-////    }
+    @ApiOperation(value = "用户发布的一条动态",notes ="前台需要传userId、title、content、dynamicOpenDegreeId、dynamicType到后台")
+    @RequestMapping(value = "/addSubmit.do",method = RequestMethod.POST)
+    public JSONResult AddDynamic(DynamicInfo model){
+        model.setDynamicCreateTime(new Date());
+        service.AddDynamic(model);
+        return JSONResult.ok("发布成功");
+    }
+
+    /**
+     * @param id  当前登录用户id
+     * @return   动态信息
+     */
     @ApiOperation(value = "通过当前登录用户id查询所有被关注者id来查询被关注者发布的动态",notes="显示该用户关注他人发布的所有动态")
     @RequestMapping(value = "selectById.do",method = RequestMethod.GET)
     public JSONResult selectById(int id){
         return JSONResult.ok(service.queryDynamic(id));
+    }
+
+    /**
+     *  id：infoId
+     *  fid：类别
+     *  oid：公开程度
+     *  title：动态主题
+     *  content：动态内容
+     *
+     * @param model 动态信息
+     * @return ok
+     */
+    @ApiOperation(value = "通过infoId修改动态信息",notes = "修改用户发布动态的主题和内容")
+    @RequestMapping(value = "/update.do",method = RequestMethod.PUT)
+    public JSONResult updateDynamic(DynamicInfo model){
+        if(model.getInfoId()!=0) {
+            model.setDynamicUpdateTime(new Date());
+            service.updateDynamic(model);
+            return JSONResult.ok("修改成功");
+        }else{
+            return JSONResult.ok("infoId参数为空");
+        }
+    }
+
+    /**
+     *
+     * @param infoId 动态表主键
+     * @return ok
+     */
+    @ApiOperation(value = "通过infoId删除动态信息",notes="删除用户指定的一条动态")
+    @RequestMapping(value ="/delete.do",method = RequestMethod.DELETE)
+    public JSONResult deleteDynamic(int infoId){
+        service.deleteDynamic(infoId);
+        return JSONResult.ok("删除成功");
     }
 }

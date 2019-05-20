@@ -36,4 +36,13 @@ public class DynamicInfoServiceImpl implements DynamicInfoService {
         return mapper.queryDynamic(id);
     }
 
+    @Override
+    public void updateDynamic(DynamicInfo model){
+        mapper.updateDynamic(model);
+    }
+
+    @Override
+    public void deleteDynamic(int infoId){
+        mapper.deleteDynamic(infoId);
+    }
 }

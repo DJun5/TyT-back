@@ -1,16 +1,21 @@
 package com.djun.tyt.serviceImpl;
 
 
+import com.djun.tyt.mapper.UploadMapper;
+import com.djun.tyt.model.Pojo.UInfoImg;
 import com.djun.tyt.model.Vo.UploadVo;
 import com.djun.tyt.service.UploadService;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.annotation.Resource;
 import java.io.File;
 import java.util.UUID;
 
 @Service
 public class UploadServiceImpl implements UploadService {
+    @Resource
+    UploadMapper mapper;
     /**
      *
      * @param file 上传的文件
@@ -52,5 +57,8 @@ public class UploadServiceImpl implements UploadService {
         }
     }
 
-
+    @Override
+    public void UploadImg(UInfoImg model){
+        mapper.UploadImg(model);
+    }
 }

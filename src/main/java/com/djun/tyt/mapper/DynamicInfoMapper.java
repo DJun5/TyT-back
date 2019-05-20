@@ -30,4 +30,16 @@ public interface DynamicInfoMapper {
      * @return 动态信息
      */
     List<DynamicInfo> queryDynamic(int id);
+
+    /**
+     * 通过infoId修改动态信息
+     * @param model 动态信息
+     */
+    void updateDynamic(DynamicInfo model);
+
+    /**
+     * 通过infoId删除动态信息
+     * @param infoId 动态表主键
+     */
+    void deleteDynamic(int infoId);
 }

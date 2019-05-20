@@ -12,4 +12,6 @@ public interface DynamicInfoService {
     List<DynamicInfo> selectedByUserId(int userId);
     void AddDynamic(DynamicInfo model);
     List<DynamicInfo> queryDynamic(int id);
+    void updateDynamic(DynamicInfo model);
+    void deleteDynamic(int infoId);
 }

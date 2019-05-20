@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.djun.tyt.mapper.UploadMapper">
+    <insert id="UploadImg">
+--         insert into u_info_img (info_id, img1, img2, img3, img4, img5, img6, img7, img8, img9) values (
+--         #{infoId},#{img1},#{img2},#{img3},#{img4},#{img5},#{img6},#{img7},#{img8},#{img9}
+--         )
+    </insert>
+</mapper>

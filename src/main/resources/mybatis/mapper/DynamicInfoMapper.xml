@@ -35,16 +35,6 @@
         order by (i.praise) DESC
     </select>
 
-    <!--<insert id="AddDynamic">-->
-        <!--insert into u_info i(-->
-        <!--<include refid="ConstantSQL.dynamicInfo"/>-->
-        <!--i.id as infoId-->
-        <!--)values(-->
-        <!--<include refid="UpdateConstantSQL.dynamicInfo"/>-->
-        <!--#{i.uid} as #{userId}-->
-        <!--)-->
-    <!--</insert>-->
-
     <select id="queryDynamic" resultType="com.djun.tyt.model.DynamicInfo">
         select
         <include refid="ConstantSQL.dynamicInfo"/>
@@ -52,12 +42,27 @@
         <include refid="ConstantSQL.dynamicOpenDegree"/>
         <include refid="ConstantSQL.dynamicType"/>
         i.id as infoId
-         from u_info i
-         left join u_info_img ii on i.id=ii.info_id
-         left join info_type it on it.id=i.fid
+        from u_info i
+        left join u_info_img ii on i.id=ii.info_id
+        left join info_type it on it.id=i.fid
         left join u_open_degree iod on iod.id=i.oid
-         where i.uid in(
-          select i.uid from u_fans where fan_id=#{id}
+        where i.uid in(
+        select i.uid from u_fans where fan_id=#{id}
         )
     </select>
+
+    <insert id="AddDynamic">
+        insert into
+          u_info(uid, oid, title, content,fid,create_time)
+        values
+          (#{userId},#{dynamicOpenDegreeId},#{title},#{content},#{dynamicType},#{dynamicCreateTime})
+    </insert>
+
+    <update id="updateDynamic">
+        update u_info set title=#{title}, content=#{content},fid=#{dynamicType},update_time=#{dynamicUpdateTime} where id=#{infoId}
+    </update>
+
+    <delete id="deleteDynamic">
+        delete from u_info where id=#{infoId}
+    </delete>
 </mapper>
