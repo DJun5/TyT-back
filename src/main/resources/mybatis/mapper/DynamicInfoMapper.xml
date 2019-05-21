@@ -3,13 +3,12 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.djun.tyt.mapper.DynamicInfoMapper">
-
     <select id="queryAll" resultType="com.djun.tyt.model.DynamicInfo">
         SELECT
-            <include refid="ConstantSQL.dynamicInfo"/>
-            <include refid="ConstantSQL.dynamicImg"/>
-            <include refid="ConstantSQL.dynamicOpenDegree"/>
-            <include refid="ConstantSQL.dynamicType"/>
+            <include refid="DynamicConstantSQL.dynamicInfo"/>
+            <include refid="DynamicConstantSQL.dynamicImg"/>
+            <include refid="DynamicConstantSQL.dynamicOpenDegree"/>
+            <include refid="DynamicConstantSQL.dynamicType"/>
         u.id as userId
         from u_info i
             JOIN u_open_degree iod on i.oid = iod.id
@@ -21,10 +20,10 @@
 
     <select id="selectedByUserId" resultType="com.djun.tyt.model.DynamicInfo">
         SELECT
-            <include refid="ConstantSQL.dynamicInfo"/>
-            <include refid="ConstantSQL.dynamicImg"/>
-            <include refid="ConstantSQL.dynamicOpenDegree"/>
-            <include refid="ConstantSQL.dynamicType"/>
+            <include refid="DynamicConstantSQL.dynamicInfo"/>
+            <include refid="DynamicConstantSQL.dynamicImg"/>
+            <include refid="DynamicConstantSQL.dynamicOpenDegree"/>
+            <include refid="DynamicConstantSQL.dynamicType"/>
         u.id as userId
         from u_info i
             JOIN u_open_degree iod on i.oid = iod.id
@@ -37,10 +36,10 @@
 
     <select id="queryDynamic" resultType="com.djun.tyt.model.DynamicInfo">
         select
-        <include refid="ConstantSQL.dynamicInfo"/>
-        <include refid="ConstantSQL.dynamicImg"/>
-        <include refid="ConstantSQL.dynamicOpenDegree"/>
-        <include refid="ConstantSQL.dynamicType"/>
+        <include refid="DynamicConstantSQL.dynamicInfo"/>
+        <include refid="DynamicConstantSQL.dynamicImg"/>
+        <include refid="DynamicConstantSQL.dynamicOpenDegree"/>
+        <include refid="DynamicConstantSQL.dynamicType"/>
         i.id as infoId
         from u_info i
         left join u_info_img ii on i.id=ii.info_id

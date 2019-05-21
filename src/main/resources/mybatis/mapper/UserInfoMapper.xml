@@ -13,7 +13,7 @@
     </select>
     <update id="update">
         update  t_user u left join u_type ut on u.tid=ut.id left join u_open_degree uod on u.oid=uod.id set
-        <include refid="UpdateConstantSQL.userInfo"/>
+        <include refid="ConstantSQL.userInfo"/>
         u.u_name = #{username}
         where u.id=#{userId}
     </update>

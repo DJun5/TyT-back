@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="DynamicConstantSQL">
+    <!-- u_info 命名为 i   查询-->
+    <sql id="dynamicInfo">
+       i.id as infoId,
+       i.uid as userId,
+       i.title,
+       i.content,
+       i.praise,
+       i.forward,
+       i.status as dynamicStatus,
+       i.browse_volume,
+       i.create_time as dynamicCreateTime,
+       i.update_time as dynamicUpdateTime,
+    </sql>
+    <!-- u_info_img 命名ii  查询-->
+    <sql id="dynamicImg">
+        ii.id,
+        ii.info_id,
+        ii.img1 as infoImg1,
+        ii.img2 as infoImg2,
+        ii.img3 as infoImg3,
+        ii.img4 as infoImg4,
+        ii.img5 as infoImg5,
+        ii.img6 as infoImg6,
+        ii.img7 as infoImg7,
+        ii.img8 as infoImg8,
+        ii.img9 as infoImg9,
+    </sql>
+    <!--u_info_img  此SQL块只用于动态图片的插入-->
+    <sql id="dynamicImg1">
+        info_id,
+        img1,
+        img2,
+        img3,
+        img4,
+        img5,
+        img6,
+        img7,
+        img8,
+        img9,
+    </sql>
+    <!-- u_info_img 此SQL块只用于动态图片的插入-->
+    <sql id="dynamicImage">
+        #{infoId},#{img1},#{img2},#{img3},#{img4},#{img5},#{img6},#{img7},#{img8},#{img9},
+    </sql>
+    <!-- u_open_degree 命名为 iod (info open degree)   查询-->
+    <sql id="dynamicOpenDegree">
+        iod.t_name as dynamicOpenDegree,
+    </sql>
+    <!-- info_type 命名为it  查询-->
+    <sql id="dynamicType">
+        it.t_name as dynamicType,
+    </sql>
+</mapper>
