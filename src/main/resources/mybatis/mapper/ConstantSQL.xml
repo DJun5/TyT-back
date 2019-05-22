@@ -45,7 +45,7 @@
         ust.t_name as serviceType,
     </sql>
     <!-- t_user 命名为 u   修改-->
-    <sql id="userInfo">
+    <sql id="userInfo1">
         u.u_name = #{username},
         u.tid=#{userType},
         u.phone=#{phone},
