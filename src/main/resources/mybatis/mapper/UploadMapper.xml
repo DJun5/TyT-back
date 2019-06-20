@@ -4,10 +4,8 @@
     <insert id="UploadImg" >
         insert into u_info_img (
           <include refid="DynamicConstantSQL.dynamicImg1"/>
-          id
         ) values (
           <include refid="DynamicConstantSQL.dynamicImage"/>
-          #{infoImgId}
         )
     </insert>
 </mapper>

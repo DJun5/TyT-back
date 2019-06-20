@@ -18,6 +18,8 @@ import utils.Constant;
 import utils.FuncUtils;
 import utils.JSONResult;
 
+import javax.annotation.Resource;
+
 @Api(description = "单文件上传接口")
 @RestController
 public class UploadController {
@@ -52,29 +54,13 @@ public class UploadController {
 
     /**
      *
-     * @param file 图片
      * @param model 图片实体类
      * @return ok
      */
     @ApiOperation(value = "图片上传", notes = "上传格式如file:'XXX.jpg'")
-    @RequestMapping(value = "/UploadImg.do", method = RequestMethod.POST,
-            consumes= MediaType.MULTIPART_FORM_DATA_VALUE)
-    public JSONResult uploadImg(@RequestParam("file") MultipartFile file, UInfoImg model) {
-        if (file == null) {
-            return JSONResult.errorMsg("检查图片参数是否为file");
-        }else {
-            try {
-                UploadVo uploadVo = FuncUtils.upload(file,uploadService, Constant.UPLOAD_PATH);
-                if (StringUtils.isEmpty(uploadVo.getUploadUrl())) {
-                    return JSONResult.errorMsg("上传失败");
-                } else {
-                    uploadService.UploadImg(model);
-                    return JSONResult.ok("上传成功");
-                }
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-            return JSONResult.errorMsg("上传失败");
-        }
+    @RequestMapping(value = "/UploadImg.do", method = RequestMethod.POST)
+    public JSONResult uploadImg(UInfoImg model) {
+        uploadService.UploadImg(model);
+        return JSONResult.ok("上传成功");
     }
 }

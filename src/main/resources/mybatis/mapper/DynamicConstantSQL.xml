@@ -41,11 +41,11 @@
         img6,
         img7,
         img8,
-        img9,
+        img9
     </sql>
     <!-- u_info_img 此SQL块只用于动态图片的插入-->
     <sql id="dynamicImage">
-        #{infoId},#{img1},#{img2},#{img3},#{img4},#{img5},#{img6},#{img7},#{img8},#{img9},
+        #{infoId},#{img1},#{img2},#{img3},#{img4},#{img5},#{img6},#{img7},#{img8},#{img9}
     </sql>
     <!-- u_open_degree 命名为 iod (info open degree)   查询-->
     <sql id="dynamicOpenDegree">
