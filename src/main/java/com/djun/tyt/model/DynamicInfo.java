@@ -4,7 +4,7 @@ import io.swagger.annotations.ApiModel;
 import java.util.Date;
 
 @ApiModel(description = "用户发布的动态信息")
-public class DynamicInfo {
+public class DynamicInfo extends UserInfo{
     /**
      * InfoId
      */
@@ -54,6 +54,10 @@ public class DynamicInfo {
      */
     private String dynamicType;
     /**
+     * 公开显示程度ID
+     */
+    private String dynamicOpenDegreeId;
+    /**
      * 公开显示程度
      */
     private String dynamicOpenDegree;
@@ -65,6 +69,14 @@ public class DynamicInfo {
      * 发布者id
      */
     private long userId;
+
+    public String getDynamicOpenDegreeId() {
+        return dynamicOpenDegreeId;
+    }
+
+    public void setDynamicOpenDegreeId(String dynamicOpenDegreeId) {
+        this.dynamicOpenDegreeId = dynamicOpenDegreeId;
+    }
 
     public int getInfoId() {
         return infoId;
