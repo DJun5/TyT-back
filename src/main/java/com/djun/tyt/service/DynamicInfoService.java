@@ -14,4 +14,5 @@ public interface DynamicInfoService {
     List<DynamicInfo> queryDynamic(int id);
     void updateDynamic(DynamicInfo model);
     void deleteDynamic(int infoId);
+    void passImg();
 }

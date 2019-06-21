@@ -45,4 +45,9 @@ public class DynamicInfoServiceImpl implements DynamicInfoService {
     public void deleteDynamic(int infoId){
         mapper.deleteDynamic(infoId);
     }
+
+    @Override
+    public void  passImg(){
+        mapper.passImg();
+    }
 }

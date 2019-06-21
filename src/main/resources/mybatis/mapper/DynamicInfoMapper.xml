@@ -5,31 +5,42 @@
 <mapper namespace="com.djun.tyt.mapper.DynamicInfoMapper">
     <select id="queryAll" resultType="com.djun.tyt.model.DynamicInfo">
         SELECT
-            <include refid="DynamicConstantSQL.dynamicInfo"/>
-            <include refid="DynamicConstantSQL.dynamicImg"/>
-            <include refid="DynamicConstantSQL.dynamicOpenDegree"/>
-            <include refid="DynamicConstantSQL.dynamicType"/>
+        <include refid="DynamicConstantSQL.dynamicInfo"/>
+        <include refid="DynamicConstantSQL.dynamicImg"/>
+        <include refid="DynamicConstantSQL.dynamicOpenDegree"/>
+        <include refid="DynamicConstantSQL.dynamicType"/>
+        <include refid="ConstantSQL.userInfo"/>
+        <include refid="ConstantSQL.userType"/>
+        <include refid="ConstantSQL.userOpenDegree"/>
         u.id as userId
         from u_info i
-            JOIN u_open_degree iod on i.oid = iod.id
-            JOIN t_user u on u.id = i.uid
-            LEFT JOIN info_type it on i.fid = it.id
-            LEFT JOIN u_info_img ii on i.id = ii.info_id
+        JOIN u_open_degree iod on i.oid = iod.id
+        JOIN t_user u on u.id = i.uid
+        LEFT JOIN info_type it on i.fid = it.id
+        LEFT JOIN u_info_img ii on i.id = ii.info_id
+        LEFT JOIN u_type ut on u.tid = ut.id
+        LEFT JOIN u_open_degree uod on uod.id = u.id
         order by (i.praise) DESC
     </select>
 
+
     <select id="selectedByUserId" resultType="com.djun.tyt.model.DynamicInfo">
         SELECT
-            <include refid="DynamicConstantSQL.dynamicInfo"/>
-            <include refid="DynamicConstantSQL.dynamicImg"/>
-            <include refid="DynamicConstantSQL.dynamicOpenDegree"/>
-            <include refid="DynamicConstantSQL.dynamicType"/>
+        <include refid="DynamicConstantSQL.dynamicInfo"/>
+        <include refid="DynamicConstantSQL.dynamicImg"/>
+        <include refid="DynamicConstantSQL.dynamicOpenDegree"/>
+        <include refid="DynamicConstantSQL.dynamicType"/>
+        <include refid="ConstantSQL.userInfo"/>
+        <include refid="ConstantSQL.userType"/>
+        <include refid="ConstantSQL.userOpenDegree"/>
         u.id as userId
         from u_info i
-            JOIN u_open_degree iod on i.oid = iod.id
-            JOIN t_user u on u.id = i.uid
-            LEFT JOIN info_type it on i.fid = it.id
-            LEFT JOIN u_info_img ii on i.id = ii.info_id
+        JOIN u_open_degree iod on i.oid = iod.id
+        JOIN t_user u on u.id = i.uid
+        LEFT JOIN info_type it on i.fid = it.id
+        LEFT JOIN u_info_img ii on i.id = ii.info_id
+        LEFT JOIN u_type ut on u.tid = ut.id
+        LEFT JOIN u_open_degree uod on uod.id = u.id
         where u.id = #{userId}
         order by (i.praise) DESC
     </select>
@@ -52,9 +63,19 @@
 
     <insert id="AddDynamic">
         insert into
-          u_info(uid, oid, title, content,fid,create_time)
+          u_info (
+          <include refid="DynamicConstantSQL.dynamicImg1"/>
+        )
         values
-          (#{userId},#{dynamicOpenDegreeId},#{title},#{content},#{dynamicType},#{dynamicCreateTime})
+          (
+          <include refid="DynamicConstantSQL.dynamicImage"/>
+        )
+    </insert>
+
+    <insert id="passImg">
+       INSERT INTO u_info_img (info_id,img1,img2,img3,img4,img5,img6,img7,img8,img9)
+	SELECT id,img1, img2, img3,img4,img5,img6,img7,img8,img9 FROM u_info where id in
+		(select max(id) from u_info)
     </insert>
 
     <update id="updateDynamic">

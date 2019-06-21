@@ -42,4 +42,9 @@ public interface DynamicInfoMapper {
      * @param infoId 动态表主键
      */
     void deleteDynamic(int infoId);
+
+    /**
+     * 传递图片
+     */
+    void passImg();
 }

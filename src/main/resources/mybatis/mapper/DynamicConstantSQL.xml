@@ -30,9 +30,14 @@
         ii.img8 as infoImg8,
         ii.img9 as infoImg9,
     </sql>
-    <!--u_info_img  此SQL块只用于动态图片的插入-->
+    <!--u_info  此SQL块用于发布动态插入-->
     <sql id="dynamicImg1">
-        info_id,
+        uid,
+        oid,
+        title,
+        content,
+        fid,
+        create_time,
         img1,
         img2,
         img3,
@@ -43,9 +48,9 @@
         img8,
         img9
     </sql>
-    <!-- u_info_img 此SQL块只用于动态图片的插入-->
+    <!-- u_info 此SQL块用于发布动态的插入-->
     <sql id="dynamicImage">
-        #{infoId},#{img1},#{img2},#{img3},#{img4},#{img5},#{img6},#{img7},#{img8},#{img9}
+       #{userId},#{dynamicOpenDegreeId},#{title},#{content},#{dynamicType},#{dynamicCreateTime},#{infoImg1},#{infoImg2},#{infoImg3},#{infoImg4},#{infoImg5},#{infoImg6},#{infoImg7},#{infoImg8},#{infoImg9}
     </sql>
     <!-- u_open_degree 命名为 iod (info open degree)   查询-->
     <sql id="dynamicOpenDegree">
